@@ -1,14 +1,20 @@
-import logo from './logo.svg';
+
 import './App.css';
-import Feed from './components/Feed';
+// import Feed from './components/Feed';
 import Home from './components/Home';
 import Nav from './components/Nav';
+import { BrowserRouter as Route} from 'react-router-dom';
 
 function App() {
   return (
     <div className="App">
-      <Nav />
-      <Home/>
+      {/* <Switch> */}
+        <Route exact path="/">
+          <Nav />
+          <Home/>
+        </Route>
+      {/* </Switch> */}
+     
       
     </div>
   );
