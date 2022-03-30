@@ -53,32 +53,31 @@ function LiensNav(){
       //  }
       //  afficherDate();
 return (
-  <div>
-    {liens.map((item) => (
+  <div>  
       <div className="container-nav">
         <div className="nav">
-          <Link to="/home" className="title">
-            Groupomania{" "}
-          </Link>
-          <Link to="/profil" id="userBdd">
-            {item.prenom} {item.nom}
-          </Link>
+          <h2 className="title">
+            Groupomania
+            </h2> 
+          <h2 className="navBtn">
+              Alexandre V.
+            {/* {item.prenom} {item.nom} */}
+          </h2>
 
           <div className="container_nav">
-            <Link to="/home" className="navBtn" title="Acceuil">
+            <h2  className="navBtn" title="Acceuil">
               <i class="fas fa-home"></i>
-            </Link>
-            <Link to="/profil" className="navBtn" title="profil">
+            </h2>
+            <h2 className="navBtn" title="profil">
               <i class="far fa-id-badge"></i>
-            </Link>
-            <div className="navBtn" onClick={logoutHandler} title="déconnexion">
+            </h2>
+            <h2 className="navBtn" onClick={logoutHandler} title="déconnexion">
               <i class="fas fa-sign-out-alt"></i>
-            </div>
+            </h2>
           </div>
           <span className="spandate" id="dateheure"></span>
         </div>
       </div>
-    ))}
   </div>
 );
 }

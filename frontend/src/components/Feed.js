@@ -1,21 +1,26 @@
 import "../styles/Feed.css"
 
 
-function Feed(){
+const admin = 1;
+
+
+function Feed({message, name, date , image}){
+
+
     return (
-      <div>
+      <div className="feedMain">
         <div className="container_post">
           <div className="container_nom">
-            <div className="structureNom">Alexandre VERGES</div>
-            <div className="structureNom1">29/03/2022 à 12h00</div>
+            <div className="structureNom">{name}</div>
+            <div className="structureNom1">{date}</div>
           </div>
           <div className="container_com">
             <div>
-              <div>Voici un super commentaire !!!</div>
+              <div>{message}</div>
             </div>
           </div>
           <div className="img">
-            <img src="https://www.photoglob.fr/wp-content/uploads/2017/09/photo-afrique-coucher-de-soleil-1024x682.jpeg" alt="exemple img" />
+            <img src={image}/>
           </div>
           <div>
             <br />
@@ -28,7 +33,7 @@ function Feed(){
             </div>
           </div>
           <div className="cardCom2">
-            <button>Supprimer</button>
+            {admin?<button>Supprimer</button> : <div></div>}
           </div>
         </div>
       </div>

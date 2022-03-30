@@ -7,7 +7,10 @@ function Nav() {
  
 
     return (
+        <div>
         <LiensNav />
+        </div>
+        
     )
 }
-export default Nav
+export default Nav;

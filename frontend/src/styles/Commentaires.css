@@ -49,12 +49,8 @@
 .dateheureucom{
     font-size: 10px;
 }
-.img>img{
-    width: 100%;
-    height: auto;
-   
-}
-.feedMain{
-    margin-top: 20px;
-    margin-bottom: 50px;
+.img{
+    width: 500px;
+    height: 500px;
+    background-color: red;
 }
