@@ -1,3 +1,11 @@
+.allCom{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
 .cardCom{
     width: 100%;
     height: auto;
@@ -14,7 +22,7 @@
     padding: 10px;
 }
 .cardCom1{
-    width: 60%;
+    width: 580px;
     height: auto;
     display: flex;
     justify-content: center;
@@ -22,8 +30,8 @@
     flex-direction: column;
     border: 1px solid rgb(241, 240, 240);
     background-color: rgb(234, 213, 253);
-    padding: 10px;
-    border-radius: 10px;
+    padding: 15px;
+    border-radius: 15px;
 }
 .container_cardCom{
     display: flex;
@@ -48,9 +56,4 @@
 }
 .dateheureucom{
     font-size: 10px;
-}
-.img{
-    width: 500px;
-    height: 500px;
-    background-color: red;
 }

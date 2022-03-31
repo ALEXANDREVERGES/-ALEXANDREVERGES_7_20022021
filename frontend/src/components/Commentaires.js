@@ -2,19 +2,23 @@ import React from 'react'
 import "../styles/Commentaires.css"
 
 
-function Commentaires() {
+const admin = 1;
+
+
+
+function Commentaires({name, date, commentaire}) {
   return (
-    <div>
-        <div className="cardCom1">
-            <div className="container_cardCom1">
-              <div>Nicolas</div>
-              <div className="dateheureucom">Aujourd'hui</div>
-            </div>          
-            <div>Je laisse le premier commentaire !!</div>           
-            <button>Supprimer</button>
-          </div>
+    <div className='allCom'>
+      <div className="cardCom1">
+        <div className="container_cardCom1">
+          <div>{name}</div>
+          <div className="dateheureucom">{date}</div>
+        </div>
+        <div>{commentaire}</div>
+        {admin ? <button>Supprimer</button> : <div></div>}
+      </div>
     </div>
-  )
+  );
 }
 
 export default Commentaires

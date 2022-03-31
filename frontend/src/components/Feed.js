@@ -1,8 +1,11 @@
 import "../styles/Feed.css"
-
+import Commentaires from "./Commentaires";
 
 const admin = 1;
 
+const name = 'Nicolas Patrick'
+const date = 'aujourd hui'
+const commentaire = 'Je laisse le premier commentaire !!'
 
 function Feed({message, name, date , image}){
 
@@ -28,6 +31,11 @@ function Feed({message, name, date , image}){
               <div className="cardCom">
                 <div className="btnCom">
                   <i class="far fa-comment"></i>
+                  <Commentaires
+                 name={name}
+                 date={date}
+                 commentaire={commentaire}
+                  />
                 </div>
               </div>
             </div>

@@ -1,0 +1,87 @@
+const dbTableUser = [{
+    nom:"Tonny",
+    prenom:"N",
+    email:"tonny@tonny.com",
+    motdepasse:"Tonny1",
+    idUser:"1",
+    photo:"",
+    admin:0
+},
+{
+    nom:"Tonny",
+    prenom:"N",
+    email:"tonny@tonny.com",
+    motdepasse:"Tonny1",
+    idUser:"2",
+    photo:"",
+    admin:1
+},
+{
+    nom:"Tonny",
+    prenom:"N",
+    email:"tonny@tonny.com",
+    motdepasse:"Tonny1",
+    idUser:"3",
+    photo:"",
+    admin:0
+},
+{
+    nom:"Tonny",
+    prenom:"N",
+    email:"tonny@tonny.com",
+    motdepasse:"Tonny1",
+    idUser:"4",
+    photo:"",
+    admin:0
+},
+{
+    nom:"Tonny",
+    prenom:"N",
+    email:"tonny@tonny.com",
+    motdepasse:"Tonny1",
+    idUser:"5",
+    photo:"",
+    admin:0
+},
+{
+    nom:"Tonny",
+    prenom:"N",
+    email:"tonny@tonny.com",
+    motdepasse:"Tonny1",
+    idUser:"6",
+    photo:"",
+    admin:0
+},
+{
+    nom:"Tonny",
+    prenom:"N",
+    email:"tonny@tonny.com",
+    motdepasse:"Tonny1",
+    idUser:"7",
+    photo:"",
+    admin:0
+},
+{
+    nom:"Tonny",
+    prenom:"N",
+    email:"tonny@tonny.com",
+    motdepasse:"Tonny1",
+    idUser:"8",
+    photo:"",
+    admin:0
+},
+{
+    nom:"Tonny",
+    prenom:"N",
+    email:"tonny@tonny.com",
+    motdepasse:"Tonny1",
+    idUser:"9",
+    photo:"",
+    admin:0
+}]
+
+//get user de la bdd
+const user = dbTableUser[2] 
+
+export default user;
+
