@@ -1,3 +1,5 @@
+import React, { createContext, useContext } from "react";
+
 const dbTableUser = [{
     nom:"Tonny",
     prenom:"N",
@@ -8,72 +10,72 @@ const dbTableUser = [{
     admin:0
 },
 {
-    nom:"Tonny",
-    prenom:"N",
-    email:"tonny@tonny.com",
+    nom:"Julien",
+    prenom:"François",
+    email:"julien@test.com",
     motdepasse:"Tonny1",
     idUser:"2",
     photo:"",
     admin:1
 },
 {
-    nom:"Tonny",
-    prenom:"N",
-    email:"tonny@tonny.com",
+    nom:"William",
+    prenom:"Robert",
+    email:"william@test.com",
     motdepasse:"Tonny1",
     idUser:"3",
     photo:"",
     admin:0
 },
 {
-    nom:"Tonny",
-    prenom:"N",
-    email:"tonny@tonny.com",
+    nom:"Floriant",
+    prenom:"Thauvin",
+    email:"floriant@test.com",
     motdepasse:"Tonny1",
     idUser:"4",
     photo:"",
     admin:0
 },
 {
-    nom:"Tonny",
-    prenom:"N",
-    email:"tonny@tonny.com",
+    nom:"Mattéo",
+    prenom:"Guen",
+    email:"matteo@test.com",
     motdepasse:"Tonny1",
     idUser:"5",
     photo:"",
     admin:0
 },
 {
-    nom:"Tonny",
-    prenom:"N",
-    email:"tonny@tonny.com",
+    nom:"Sylvie",
+    prenom:"Julie",
+    email:"sylvie@test.com",
     motdepasse:"Tonny1",
     idUser:"6",
     photo:"",
     admin:0
 },
 {
-    nom:"Tonny",
-    prenom:"N",
-    email:"tonny@tonny.com",
+    nom:"Sabrina",
+    prenom:"Bel",
+    email:"sabrina@test.com",
     motdepasse:"Tonny1",
     idUser:"7",
     photo:"",
     admin:0
 },
 {
-    nom:"Tonny",
-    prenom:"N",
-    email:"tonny@tonny.com",
+    nom:"Jordan",
+    prenom:"Thierry",
+    email:"jordan@test.com",
     motdepasse:"Tonny1",
     idUser:"8",
     photo:"",
     admin:0
 },
 {
-    nom:"Tonny",
-    prenom:"N",
-    email:"tonny@tonny.com",
+    nom:"Arthur",
+    prenom:"Romain",
+    email:"arthur@test.com",
     motdepasse:"Tonny1",
     idUser:"9",
     photo:"",
@@ -83,5 +85,19 @@ const dbTableUser = [{
 //get user de la bdd
 const user = dbTableUser[2] 
 
-export default user;
+//Create context 
+export const statContext = createContext({});
+//UseEffect pour gérer Auth
+export const AuthProvider = ({children}) => {
+<statContext.Provider value={{user}} >
+    {children}
+</statContext.Provider>
+}
+//Récupérer utilisateur après auth
+//Ajouter user au data layer/context api
+
+
+export default function UseDataLayer(){
+    useContext(statContext);
+};
 

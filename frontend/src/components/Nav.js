@@ -1,14 +1,17 @@
 
-import '../styles/Nav.css'
-import user from '../Auth';
-import { useHistory } from "react-router-dom";
+// import "../styles/Nav.css"
+// import user from '../Auth';
+// import { useHistory } from "react-router-dom";
 import React, {useEffect, useState} from "react";
+import UseDataLayer from '../Auth';
+
 
 function Nav() {
     const data  = JSON.parse(localStorage.getItem("user")) 
     const [liens, setLiens] = useState([]);
     const id = data.results.results[0].iduser;
-   
+   const {user} = UseDataLayer();
+   console.log("user--->", user);
   
     const bdd = {
      method: "GET",
