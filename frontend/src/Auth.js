@@ -1,4 +1,4 @@
-import React, { createContext, useContext } from "react";
+import React, { createContext, useContext, useState } from "react";
 
 const dbTableUser = [{
     nom:"Tonny",
@@ -83,13 +83,16 @@ const dbTableUser = [{
 }]
 
 //get user de la bdd
-const user = dbTableUser[2] 
+const dbUser = dbTableUser[2]; 
 
 //Create context 
 export const statContext = createContext();
 //UseEffect pour gérer Auth
 export const AuthProvider = ({children}) => {
+    const {user, setUser} = useState(null); 
+    setUser(dbUser);
     return(
+        
         <statContext.Provider value={user} >
             {children}
         </statContext.Provider>

@@ -10,7 +10,8 @@ function Nav() {
     const data  = JSON.parse(localStorage.getItem("user")) 
     const [liens, setLiens] = useState([]);
     const id = data.results.results[0].iduser;
-   const {user} = UseDataLayer();
+    const {user} = UseDataLayer();
+  //  console.log(user);
 //   const user = {
 //     nom:"Tonny",
 //     prenom:"N",
