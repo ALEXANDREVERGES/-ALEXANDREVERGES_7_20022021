@@ -10,16 +10,16 @@ function Nav() {
     const data  = JSON.parse(localStorage.getItem("user")) 
     const [liens, setLiens] = useState([]);
     const id = data.results.results[0].iduser;
-  //  const {user} = UseDataLayer();
-  const user = {
-    nom:"Tonny",
-    prenom:"N",
-    email:"tonny@tonny.com",
-    motdepasse:"Tonny1",
-    idUser:"1",
-    photo:"",
-    admin:0
-}
+   const {user} = UseDataLayer();
+//   const user = {
+//     nom:"Tonny",
+//     prenom:"N",
+//     email:"tonny@tonny.com",
+//     motdepasse:"Tonny1",
+//     idUser:"1",
+//     photo:"",
+//     admin:0
+// }
   
     const bdd = {
      method: "GET",

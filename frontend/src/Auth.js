@@ -86,12 +86,15 @@ const dbTableUser = [{
 const user = dbTableUser[2] 
 
 //Create context 
-export const statContext = createContext({});
+export const statContext = createContext();
 //UseEffect pour gérer Auth
 export const AuthProvider = ({children}) => {
-<statContext.Provider value={{user}} >
-    {children}
-</statContext.Provider>
+    return(
+        <statContext.Provider value={user} >
+            {children}
+        </statContext.Provider>
+    )
+
 }
 //Récupérer utilisateur après auth
 //Ajouter user au data layer/context api
