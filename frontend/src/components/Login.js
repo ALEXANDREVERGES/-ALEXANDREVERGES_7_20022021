@@ -6,7 +6,9 @@ import ('../components/Nav.js')
 
 export default function Login() {
 
- 
+  function signup(){
+    window.location.href="/signup"
+  }
  
     
     return (
@@ -40,6 +42,7 @@ export default function Login() {
   
         <button className="btnSins" /*</form>onClick={()=> {//history.push('/home');}}*/>Connexion</button>
         <div class="white">Vous n'avez pas de compte?</div>
+        <div onClick={signup}>S'inscrire</div>
       
       </form>
       </div>

@@ -8,14 +8,23 @@ const admin = 1;
 
 function Commentaires({name, date, commentaire}) {
   return (
-    <div className='allCom'>
+    <div className="allCom">
       <div className="cardCom1">
         <div className="container_cardCom1">
-          <div>{name}</div>
-          <div className="dateheureucom">{date}</div>
+          <div className='icon_cardcom'>
+            <div>{name}</div>
+            {admin ? <i class="fa fa-trash" aria-hidden="true"></i> : <div></div>}
+          </div>
+          <div className='date_cardcom'>
+            <div className="dateheureucom">{date}</div>
+          </div>
+          
+          <div>
+             
+          </div>
+         
         </div>
         <div>{commentaire}</div>
-        {admin ? <button>Supprimer</button> : <div></div>}
       </div>
     </div>
   );

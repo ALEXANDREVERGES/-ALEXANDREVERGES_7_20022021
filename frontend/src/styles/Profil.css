@@ -75,6 +75,10 @@
     border-radius: 50px;
     
 }
+.img_profil{
+    width: 100px;
+    height: 100px;
+}
 .container_desc{
     width: 100%;
     display: flex;

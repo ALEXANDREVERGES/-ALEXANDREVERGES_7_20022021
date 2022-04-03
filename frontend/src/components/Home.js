@@ -13,7 +13,7 @@ export default function Home() {
       <Post />
       <div className="container_posthome">
         <TousLesFeed />
-        <Commentaires/>
+        {/* <Commentaires/> */}
       </div>
     </div>
   );

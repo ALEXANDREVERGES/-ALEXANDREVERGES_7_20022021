@@ -89,21 +89,21 @@ const dbUser = dbTableUser[2];
 export const statContext = createContext();
 //UseEffect pour gérer Auth
 export const AuthProvider = ({children}) => {
-    const {user, setUser} = useState(null); 
-    setUser(dbUser);
+    const [user, setUser] = useState(dbUser); 
+   
     return(
         
-        <statContext.Provider value={user} >
+        <statContext.Provider value={{user, setUser}} >
             {children}
         </statContext.Provider>
-    )
+    );
 
 }
 //Récupérer utilisateur après auth
 //Ajouter user au data layer/context api
 
 
-export default function UseDataLayer(){
-    useContext(statContext);
+export default function UseDataLayer() {
+  return useContext(statContext);
 };
 

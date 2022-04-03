@@ -1,8 +1,15 @@
 import React from 'react'
-import user from '../Auth';
+import UseDataLayer from '../AuthProvider';
+import user from '../AuthProvider';
 import '../styles/Profil.css'
 
+
+
 function Profil() {
+    const {user} = UseDataLayer();
+    function modification(){
+        window.location.href="/modification"
+      }
   return (
     <div className="container_profil">
     <form className="profil" >
@@ -30,7 +37,7 @@ function Profil() {
             </div>
         </div>
         <div>
-            <button className="btnModif" >Mofifier profil</button>
+            <button className="btnModif" onClick={modification} >Mofifier profil</button>
             <button className="btnModif">Supprimer compte</button>
             </div>
     </form>

@@ -6,7 +6,9 @@ import { useHistory } from "react-router-dom";
 //const userRegistered = () => toast.success("Vous êtes bien enregistrés, vous pouvez vous connecter.");
 
 export default function SignUp() {
-
+  function login(){
+    window.location.href="/login"
+  }
 return (
   <div className="pos-form">
 <form className="formulaire" >
@@ -56,6 +58,7 @@ return (
 
   <button className="btnSins">S'inscrire</button>
   <div class="white">Vous avez déjà un compte?</div>
+  <div onClick={login}>Se connecter</div>
 
 </form>
 </div>
