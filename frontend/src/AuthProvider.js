@@ -83,7 +83,8 @@ const dbTableUser = [{
 }]
 
 //get user de la bdd
-const dbUser = dbTableUser[2]; 
+ const dbUser = dbTableUser[2]; 
+
 
 //Create context 
 export const statContext = createContext();

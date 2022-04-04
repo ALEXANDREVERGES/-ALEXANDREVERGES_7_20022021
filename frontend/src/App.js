@@ -10,6 +10,7 @@ import Profil from './components/Profil';
  import Login from './components/Login';
 import UseDataLayer from './AuthProvider';
 import Modification from './components/Modification';
+import Header from './components/Header';
 
 function App() {
   const {user, setUser} = UseDataLayer();
@@ -36,9 +37,11 @@ function App() {
                 <Modification />
               </Route>
               <Route path="/login">
+                <Header/>
                 <Login />
               </Route>
               <Route path="/signup">
+                <Header/>
                 <SignUp />
               </Route>
             </Switch>
