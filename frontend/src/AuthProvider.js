@@ -106,8 +106,8 @@ export const AuthProvider = ({children}) => {
             if (res.token && res.results) {
               //  localStorage.setItem("user", JSON.stringify(res));
               console.log("test");
-              setUser(res.results);
-              console.log("user-->", res);
+              setUser(res.results.results[0]);
+              console.log("user-->", user);
               history.push("/");
             } else {
               alert("Mauvais email ou mot de passe !");
@@ -117,7 +117,7 @@ export const AuthProvider = ({children}) => {
     }); 
     return(
         
-        <statContext.Provider value={{user, setUser, loginSubmit}} >
+        <statContext.Provider value={{user, setUser, loginSubmit}} >         
             {children}
         </statContext.Provider>
     );
