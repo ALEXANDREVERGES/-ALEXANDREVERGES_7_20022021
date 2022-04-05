@@ -14,15 +14,10 @@ export default function Login() {
  
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
- const {user, setUser} = UseDataLayer();
+  const {loginSubmit} = UseDataLayer();
 
 
-
-  const loginSubmit = (event) => {
-
-    event.preventDefault();
-
-    const Options = {
+ const option = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -30,29 +25,37 @@ export default function Login() {
         password: password
       }),
     };
-    fetch("http://localhost:3000/auth/login", Options)
-    .then(response => response.json())
-    .then(function(res) {
-      if(res.token && res.results){
-        // localStorage.setItem("user", JSON.stringify(res));
-        setUser(res);
-        console.log("user-->", user);
-        console.log("test")
+
+  // const loginSubmit = (event, Options) => {
+
+  //   event.preventDefault();
+
+   
+
+
+  //   fetch("http://localhost:3000/auth/login", Options)
+  //   .then(response => response.json())
+  //   .then(function(res) { 
+  //     if(res.token && res.results){
+  //        localStorage.setItem("user", JSON.stringify(res));
+       
+  //       console.log("user-->", res);
+  //       console.log("test")
         
         
  
-        history.push("/");
-      } else{
-    alert('Mauvais email ou mot de passe !')   
-    history.push("/login");
-  }     
-      })
+  //       history.push("/");
+  //     } else{
+  //   alert('Mauvais email ou mot de passe !')   
+  //   history.push("/login");
+  // }     
+  //     })
     
-    }
+  //   }
     
     return (
         <div className="pos-form">
-      <form className="formulaire" onSubmit={loginSubmit}>
+      <form className="formulaire" onSubmit={e => loginSubmit(e, option)}>
       <div className="choix">
     
   </div>
@@ -79,7 +82,7 @@ export default function Login() {
         </label>
   
   
-        <button className="btnSins" /*</form>onClick={()=> {//history.push('/home');}}*/>Connexion</button>
+        <button className="btnSins"/*</form>onClick={()=> {//history.push('/home');}}*/>Connexion</button>
         <div class="white">Vous n'avez pas de compte?</div>
         <div onClick={signup}>S'inscrire</div>
       
