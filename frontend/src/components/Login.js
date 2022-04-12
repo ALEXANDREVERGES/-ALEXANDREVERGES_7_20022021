@@ -7,17 +7,17 @@ import ('../components/Nav.js')
 
 export default function Login() {
 
-  function signup(){
-    window.location.href="/signup"
-  }
-  let history = useHistory();
  
+   let history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const {loginSubmit} = UseDataLayer();
+  const [{user, token}, dispatch] = UseDataLayer();
 
+  const loginSubmit = (event) => {
 
- const option = {
+    event.preventDefault();
+  
+    const Options = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -25,37 +25,36 @@ export default function Login() {
         password: password
       }),
     };
-
-  // const loginSubmit = (event, Options) => {
-
-  //   event.preventDefault();
-
+    fetch("http://localhost:3000/auth/login", Options)
+    .then(response => response.json())
+    .then(function(res) {
+      if(res.token && res.results){
+        console.log("res.token", res.token)
+        console.log("tous les res", res)
+        if (!res) {
+          return;
+        }
+        dispatch({
+          type: "SETUSER",
+          user: res.results.results[0],
+        });
+        dispatch({
+          type: "SETTOKEN",
+          token: res.token,
+        });
+        history.push("/");
+      } else{
+    alert('Mauvais email ou mot de passe !')   
    
-
-
-  //   fetch("http://localhost:3000/auth/login", Options)
-  //   .then(response => response.json())
-  //   .then(function(res) { 
-  //     if(res.token && res.results){
-  //        localStorage.setItem("user", JSON.stringify(res));
-       
-  //       console.log("user-->", res);
-  //       console.log("test")
-        
-        
- 
-  //       history.push("/");
-  //     } else{
-  //   alert('Mauvais email ou mot de passe !')   
-  //   history.push("/login");
-  // }     
-  //     })
+  }   
+      })
     
-  //   }
+    }
+
     
     return (
         <div className="pos-form">
-      <form className="formulaire" onSubmit={e => loginSubmit(e, option)}>
+      <form className="formulaire" onSubmit={loginSubmit}>
       <div className="choix">
     
   </div>
@@ -81,10 +80,10 @@ export default function Login() {
             required />
         </label>
   
-  
-        <button className="btnSins"/*</form>onClick={()=> {//history.push('/home');}}*/>Connexion</button>
-        <div class="white">Vous n'avez pas de compte?</div>
-        <div onClick={signup}>S'inscrire</div>
+        
+        <button className="btnSins" /*</form>onClick={()=> {//history.push('/home');}}*/>Connexion</button>
+        <div className="white">Vous n'avez pas de compte?</div>
+        <div>S'inscrire</div>
       
       </form>
       </div>

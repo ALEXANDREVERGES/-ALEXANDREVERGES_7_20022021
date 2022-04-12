@@ -129,3 +129,14 @@ label{
 .btnModif{
     margin-left: 20px;
 }
+.BtnSubImg{
+    width: 100px;
+}
+.imgimg{ 
+    border: 1px solid black;
+    background-size: cover;
+    width: 100px;
+    height: 100px;
+    border: 1px solid blueviolet;
+    border-radius: 50px;  
+}

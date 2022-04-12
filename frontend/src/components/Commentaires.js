@@ -1,6 +1,7 @@
 import React from 'react'
 import "../styles/Commentaires.css"
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
 
 const admin = 1;
 
@@ -13,7 +14,7 @@ function Commentaires({name, date, commentaire}) {
         <div className="container_cardCom1">
           <div className='icon_cardcom'>
             <div>{name}</div>
-            {admin ? <i class="fa fa-trash" aria-hidden="true"></i> : <div></div>}
+            {admin ? <FontAwesomeIcon icon={faTrash} /> : <div></div>}
           </div>
           <div className='date_cardcom'>
             <div className="dateheureucom">{date}</div>

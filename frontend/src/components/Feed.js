@@ -1,20 +1,24 @@
+import { faComment } from "@fortawesome/free-solid-svg-icons";
 import "../styles/Feed.css"
 import Commentaires from "./Commentaires";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import UseDataLayer from "../AuthProvider";
 
-const admin = 1;
+
 
 const name = 'Nicolas Patrick'
 const date = 'aujourd hui'
 const commentaire = 'Je laisse le premier commentaire !!'
 
-function Feed({message, name, date , image}){
-
+function Feed({message, nom, prenom, date , image}){
+  const [{user}, dispatch] = UseDataLayer();
+  console.log("typeof", typeof user.admin)
 
     return (
       <div className="feedMain">
         <div className="container_post">
           <div className="container_nom">
-            <div className="structureNom">{name}</div>
+            <div className="structureNom">{prenom} {nom} </div>
             <div className="structureNom1">{date}</div>
           </div>
           <div className="container_com">
@@ -30,18 +34,20 @@ function Feed({message, name, date , image}){
             <div className="choice">
               <div className="cardCom">
                 <div className="btnCom">
-                  <i class="far fa-comment"></i>
+                <FontAwesomeIcon icon={faComment} />
                   <Commentaires
                  name={name}
                  date={date}
                  commentaire={commentaire}
-                  />
+                  /> 
                 </div>
               </div>
             </div>
           </div>
           <div className="cardCom2">
-            {admin?<button>Supprimer</button> : <div></div>}
+            {console.log("status admin", user.admin)}
+            {user?.admin?(<button>Supprimer</button> ): (<div></div>)}
+
           </div>
         </div>
       </div>

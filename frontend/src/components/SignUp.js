@@ -1,21 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import '../styles/LogSign.css';
 
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 //import { toast } from "react-toastify";
 //const userRegistered = () => toast.success("Vous êtes bien enregistrés, vous pouvez vous connecter.");
 
 export default function SignUp() {
-  function login(){
-    window.location.href="/login"
-  }
+  // function login(){
+  //   window.location.href="/login"
+  // }
   let history = useHistory();
-  const [email, setEmail] = React.useState("");
-  const [password, setPassword] = React.useState("");
-  const [prenom, setPrenom] = React.useState("");
-  const [nom, setNom] = React.useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [prenom, setPrenom] = useState("");
+  const [nom, setNom] = useState("");
   const admin = 0;
-  const image = '';
+  // const image = '';
 
   const signupHandler = (event) => {
     const regexName =/^(([a-zA-ZÀ-ÿ]+[\s\-]{1}[a-zA-ZÀ-ÿ]+)|([a-zA-ZÀ-ÿ]+))$/;
@@ -62,9 +62,10 @@ export default function SignUp() {
         email: email,
         password: password,
         admin : admin,
-        image: image
+        // image: image
       }),
     };
+    console.log("body", requestOptions)
     fetch("http://localhost:3000/auth/signup", requestOptions)
       .then((response) => {
         console.log(response.json());
@@ -95,6 +96,7 @@ return (
     placeholder="Prénom"
       name="prenom"
       type="prenom"
+      
       onChange={e => setPrenom(e.target.value)}
       required />
   </label>
@@ -128,8 +130,9 @@ return (
 
 
   <button className="btnSins">S'inscrire</button>
-  <div class="white">Vous avez déjà un compte?</div>
-  <div onClick={login}>Se connecter</div>
+  <div className="white">Vous avez déjà un compte?</div>
+ {/* <Link to="/login"><div>Se connecter</div></Link> */}
+ <div>Se connecter</div>
 
 </form>
 </div>

@@ -10,7 +10,7 @@ import Commentaires from "../components/Commentaires"
 export default function Home() {
   return (
     <div className="container_home">
-      <Post />
+      <Post /> 
       <div className="container_posthome">
         <TousLesFeed />
         {/* <Commentaires/> */}

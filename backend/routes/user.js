@@ -11,9 +11,10 @@ const auth = require('../middleware/auth.js')
 
 router.post('/signup', passwordControl, userCtrl.signup);
 router.post('/login',  userCtrl.login);
-router.put('/modification/:iduser',auth, userCtrl.modifyCount );
+router.put('/modification/:iduser',userCtrl.modifyCount );
+router.put('/modification/avatar/:iduser',userCtrl.modifyAvatar );
 router.get('/get/:iduser', userCtrl.getUser)
-router.delete('/delete/:iduser', auth, userCtrl.deleteUser)
+router.delete('/delete/:iduser', userCtrl.deleteUser)
 
 
 module.exports = router;

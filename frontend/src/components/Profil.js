@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import UseDataLayer from '../AuthProvider';
 import user from '../AuthProvider';
 import '../styles/Profil.css'
@@ -6,7 +7,7 @@ import '../styles/Profil.css'
 
 
 function Profil() {
-    const {user} = UseDataLayer();
+    const [{user}, dispatch] = UseDataLayer();
     function modification(){
         window.location.href="/modification"
       }
@@ -15,7 +16,7 @@ function Profil() {
     <form className="profil" >
         <div className="container_desc">
             <div className="container_photo">
-                <div className="container_img"></div>
+                <img src={user.avatar}/>
                 <div className="text">Groupomania</div>
                 
             </div>
@@ -37,8 +38,9 @@ function Profil() {
             </div>
         </div>
         <div>
-            <button className="btnModif" onClick={modification} >Mofifier profil</button>
-            <button className="btnModif">Supprimer compte</button>
+            <Link to="/avatar"><button className="btnModif"  >Modifier avatar</button> </Link>
+           <Link to="/modification"> <button className="btnModif"  >Mofifier profil</button></Link>
+            <Link to="/delete"><button className="btnModif">Supprimer compte</button></Link>
             </div>
     </form>
 

@@ -1,0 +1,17 @@
+// let history = useHistory();
+    // useEffect(()=>{        
+    //     fetch("http://localhost:3000/auth/login", Options)
+    //       .then((response) => response.json())
+    //       .then(function (res) {
+    //         if (res.token && res.results) {
+    //           //  localStorage.setItem("user", JSON.stringify(res));
+    //           console.log("test");
+    //           setUser(res.results.results[0]);
+    //           console.log("user-->", user);
+    //         //   history.push("/");
+    //         } else {
+    //           alert("Mauvais email ou mot de passe !");
+    //         //   history.push("/login");
+    //         }
+    //       });
+    // }); 

@@ -1,60 +1,50 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import UseDataLayer from '../AuthProvider';
 import Feed from '../components/Feed'
-const DATA = [
-  {
-    id: 1,
-    message: "Voici un super commentaire !!!",
-    name: "Alexandre VERGES",
-    date: "29/03/2022 à 12h00",
-    image:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1280px-Image_created_with_a_mobile_phone.png",
-  },
-  {
-    id: 2,
-    message: "Voici un super commentaire !!!",
-    name: "Alexandre VERGES",
-    date: "29/03/2022 à 12h00",
-    image:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1280px-Image_created_with_a_mobile_phone.png",
-  },
-  {
-    id: 3,
-    message: "Voici un super commentaire !!!",
-    name: "Alexandre VERGES",
-    date: "29/03/2022 à 12h00",
-    image:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1280px-Image_created_with_a_mobile_phone.png",
-  },
-  {
-    id: 4,
-    message: "Voici un super commentaire !!!",
-    name: "Alexandre VERGES",
-    date: "29/03/2022 à 12h00",
-    image:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1280px-Image_created_with_a_mobile_phone.png",
-  },
-  {
-    id: 5,
-    message: "Voici un super commentaire !!!",
-    name: "Alexandre VERGES",
-    date: "29/03/2022 à 12h00",
-    image: "",
-  },
-  {
-    id: 6,
-    message: "Voici un super commentaire !!!",
-    name: "Alexandre VERGES",
-    date: "29/03/2022 à 12h00",
-    image:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1280px-Image_created_with_a_mobile_phone.png",
-  },
-];
- 
+// import axios from 'axios';
+
+
+
+
 function TousLesFeed() {
+const [commentaires, setCommentaires] = useState([]);
+const [{token}, dispatch] = UseDataLayer();
+  
+    console.log("token de tous les feeds", token);
+    useEffect(() => {
+      fetch(`http://localhost:3000/api/get/commentaire`, {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data) {
+              console.log("data", data);
+              setCommentaires(data);
+              //  window.location.reload();
+            }
+          })
+          return (data) => {
+            data = false;
+
+          };
+    },[commentaires])
+
+    
+      
+        
+    
+    // console.log("commentaires--->", commentaires)
+  
+
+
   return (
     <div>
-     { DATA.map(feed=>
-      (<Feed key={feed.id} message={feed.message} name={feed.name} date={feed.date} image={feed.image} />))}
+
+     {commentaires.map(feed=> 
+      (<Feed key={feed.id} message={feed.commentaire} prenom={feed.prenom} nom={feed.nom} date={feed.time} image={require(`../images/${feed.images}`)} />))}    
     </div>
   );
 }

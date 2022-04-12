@@ -1,0 +1,17 @@
+.positionForm{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 100px;
+}
+
+.imgAvatar{
+   
+    border: 1px solid black;
+    background-size: cover;
+    width: 100px;
+    height: 100px;
+    border: 1px solid blueviolet;
+    border-radius: 50px;
+}

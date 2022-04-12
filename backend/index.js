@@ -6,7 +6,7 @@ const http = require('http');
 const app = express();
 const path = require('path');
 const userRoutes = require('./routes/user');
-// const postRoutes = require('./routes/post')
+const postRoutes = require('./routes/post')
 const bodyParser = require ('body-parser');
 const db = require('../backend/data/databaseConnect');
 app.use(cors());
@@ -60,24 +60,26 @@ app.use((req, res, next) => {
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 //************************************************************************************************************************** */
-// app.use('/images', express.static(path.join(__dirname, "images")));
+//  app.use('/images', express.static(path.join(__dirname, "images")));
+app.use(express.static("images"));
 app.use('/auth', userRoutes);
-// app.use('/api', postRoutes);
+app.use('/api', postRoutes);
 
 
 app.post('/upload', function (req, res){
-  let image;
+  let imageFile;
   let uploadPath;
  
-  console.log("req.files.image--->",req.files.image);
+  console.log("req.files.image--->",req.files.IMG);
   if  ( !req.files  ||  Object.keys( req.files ).length  ===  0 )  { 
     return  res.status( 400 ) . send ( 'Aucun fichier téléchargé' ) ; 
   }
-   image  =  req.files.image;
-   uploadPath  = __dirname + '/images/' + image.name ;
+   imageFile  =  req.files.IMG;
+   uploadPath  =  'C:/Users/33629/Documents/groupomania/frontend/src' + '/images/' + imageFile.name ;
+  // uploadPath  = image.name ;
    
-   console.log(uploadPath)
-  image.mv(uploadPath, function(err) {
+   console.log("uploadPath",uploadPath)
+  imageFile.mv(uploadPath, function(err) {
     if (err)
       return res.status(500).send(err);
   });

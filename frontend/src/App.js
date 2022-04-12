@@ -11,15 +11,19 @@ import Profil from './components/Profil';
 import UseDataLayer from './AuthProvider';
 import Modification from './components/Modification';
 import Header from './components/Header';
+import Delete from './components/Delete';
+import Avatar from './components/Avatar';
 
 function App() {
-  const {user, setUser} = UseDataLayer();
+  const [{user}, dispatch] = UseDataLayer();
+  // const {user, setUser} = UseDataLayer();
 //  setUser(null);
 
 
   
   return (
     <div className="App">
+      {console.log("user de App", user)}
       {user ? (
         <div>
           <Router>
@@ -28,21 +32,21 @@ function App() {
                 <Nav />
                 <Home />
               </Route>
-              <Route path="/profil">
+               <Route path="/profil">
                 <Nav />
                 <Profil />
-              </Route>
+              </Route> 
               <Route path="/modification">
                 <Nav />
                 <Modification />
               </Route>
-              <Route path="/login">
-                <Header/>
-                <Login />
+              <Route path="/avatar">
+                <Nav />
+                <Avatar />
               </Route>
-              <Route path="/signup">
-                <Header/>
-                <SignUp />
+              <Route path="/delete">
+                <Nav />
+                <Delete />
               </Route>
             </Switch>
           </Router>
@@ -52,8 +56,16 @@ function App() {
         </div>
       ) : (
         <div>
-          <Login />
-          <SignUp />
+           <Router>
+            <Switch>
+              <Route>
+                <Login />
+                <SignUp />
+              </Route>
+            </Switch>
+          </Router>  
+          {/* <Login />
+          <SignUp /> */}
         </div>
       )}
     </div>

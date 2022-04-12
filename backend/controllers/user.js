@@ -22,7 +22,7 @@ exports.signup = async (req, res) => {
      const email = req.body.email;
      const password = req.body.password;
      const admin = req.body.admin;
-     const image = req.body.image;
+    //  const image = req.body.image;
     // const iduser = req.body.iduser;
     // ====== Password encryption =========
     const salt = await bcrypt.genSalt(10);
@@ -32,7 +32,7 @@ exports.signup = async (req, res) => {
     };
    console.log(req.body)
     console.log(pass)
-    db.query("INSERT INTO user (nom, prenom, email, password, admin, image ) VALUES (?,?,?,?,?,?)",[nom, prenom, email, pass["password"], admin, image], (err,result)=> {
+    db.query("INSERT INTO user (nom, prenom, email, password, admin) VALUES (?,?,?,?,?)",[nom, prenom, email, pass["password"], admin], (err,result)=> {
       console.log("results------>", result)
       console.log ("password",pass["password"])
       if (!result) {
@@ -84,15 +84,15 @@ exports.login = (req, res) => {
         return res.status(401).json({ error: 'Mot de passe incorrect !'});
       }  
         console.log("Connexion réussi !!");
-       return  res.status(200).json({ 
-          iduser: results[0].iduser,
-          results:({results}),
-          token: jwt.sign(
-            { userId: results[0].iduser },
-            process.env.JWT_RANDOM_TOKEN,
-            { expiresIn: '24h'})
-         
-        })
+       return res.status(200).json({
+         iduser: results[0].iduser,
+         results: { results },
+         token: jwt.sign(
+           { userId: results[0].iduser },
+           process.env.JWT_RANDOM_TOKEN,
+           { expiresIn: "24h" }
+         ),
+       });
      
       })
       .catch(error => res.status(500).json({ error }));
@@ -129,7 +129,30 @@ exports.login = (req, res) => {
     res.status(409).json({ message: "Failed registration", err });
   }
 };
+//****************************************MODIFIER AVATAR*************************************************** */
+exports.modifyAvatar= (req, res) => {
+  try{
+const avatar = req.body.avatar;
+let uploadPath = 'C:/Users/33629/Documents/groupomania/frontend/src' + '/images/' + avatar;
 
+  const id = {
+    iduser: req.params.iduser
+   } ;
+   
+   db.query("UPDATE user SET  avatar=? WHERE iduser=? ", [uploadPath, id["iduser"] ], (err, result)=>{
+     
+   //  console.log("result--->", result)
+     if(err) {
+      console.log(err)
+     }else {
+   // res.send(result)
+    res.status(200).json({message: 'Modification effectuée !'})
+     }
+   })
+  }catch (err) {
+    res.status(409).json({ message: "Failed registration", err });
+  }
+};
 //************************************GET USER*******************************************************************/
 exports.getUser = (req, res) => {
   //console.log("req.params--->", req.params)

@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
+import React, { createContext, useContext,  useReducer,  useState } from "react";
 import { useHistory } from "react-router-dom";
 
 const dbTableUser = [{
@@ -91,33 +91,15 @@ const dbTableUser = [{
 export const statContext = createContext();
 //UseEffect pour gérer Auth
 
-export const AuthProvider = ({children}) => {
-    const [user, setUser] = useState({});
-    const [Options, setOptions] = useState({}); 
-    const loginSubmit = (event, opt) => {
-        event.preventDefault();
-        setOptions(opt);
-    }
-    let history = useHistory();
-    useEffect(()=>{        
-        fetch("http://localhost:3000/auth/login", Options)
-          .then((response) => response.json())
-          .then(function (res) {
-            if (res.token && res.results) {
-              //  localStorage.setItem("user", JSON.stringify(res));
-              console.log("test");
-              setUser(res.results.results[0]);
-              console.log("user-->", user);
-              history.push("/");
-            } else {
-              alert("Mauvais email ou mot de passe !");
-              history.push("/login");
-            }
-          });
-    }); 
+export const AuthProvider = ({initialState, reducer, children}) => {
+    // const [user, setUser] = useState(dbUser);
+
+
+    
+  
     return(
         
-        <statContext.Provider value={{user, setUser, loginSubmit}} >         
+        <statContext.Provider value={useReducer(reducer, initialState )} >         
             {children}
         </statContext.Provider>
     );
