@@ -9,9 +9,10 @@ import { faHome, faIdBadge, faSignOutAlt } from "@fortawesome/free-solid-svg-ico
 import { Link } from 'react-router-dom';
 
 function Nav() {
- 
+  
 const [{user}, dispatch] = UseDataLayer();
 
+const avatarImage = user.avatar?user.avatar: "default-avatar.jpg";
 
      
   return (
@@ -22,7 +23,7 @@ const [{user}, dispatch] = UseDataLayer();
             <h2 className="title">Groupomania</h2>{" "}
           </Link>
           <h2 className="navBtn">
-           <img src={user.avatar}/> {user.prenom} {user.nom}
+           <img className="imgNav" src={require(`../images/${avatarImage}`)}/> {user.prenom} {user.nom}
           </h2>
 
           <div className="container_nav">

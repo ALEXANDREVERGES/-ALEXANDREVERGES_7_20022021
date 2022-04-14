@@ -40,24 +40,19 @@ function Modification(){
           method: "PUT",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
-            iduser:user.iduser,
+            
             nom: nom1,
             prenom: prenom1,
             email: email1,
             
-            
           })
           
         };
-       console.log("formModify", formModify)
+        console.log(formModify)
         fetch(`http://localhost:3000/auth/modification/${user.iduser}`, formModify)
         
           .then((res) => {
-          //  console.log("formModify--->",formModify.body)
-         //   console.log("res--->" , res)
-         //    localStorage.setItem("user", JSON.stringify(formModify.body));
-            // window.location.reload();
-            
+         
           })
           .catch((error) => console.log(error));
           

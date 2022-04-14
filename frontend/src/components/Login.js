@@ -29,8 +29,9 @@ export default function Login() {
     .then(response => response.json())
     .then(function(res) {
       if(res.token && res.results){
-        console.log("res.token", res.token)
-        console.log("tous les res", res)
+        localStorage.setItem("userlog", JSON.stringify(res));
+        
+        
         if (!res) {
           return;
         }
@@ -42,6 +43,7 @@ export default function Login() {
           type: "SETTOKEN",
           token: res.token,
         });
+        
         history.push("/");
       } else{
     alert('Mauvais email ou mot de passe !')   

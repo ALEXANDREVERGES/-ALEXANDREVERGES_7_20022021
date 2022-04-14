@@ -8,6 +8,7 @@ import Commentaires from "../components/Commentaires"
 
 //import {Redirect} from "react-router-dom";
 export default function Home() {
+ 
   return (
     <div className="container_home">
       <Post /> 

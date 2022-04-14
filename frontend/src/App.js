@@ -23,7 +23,7 @@ function App() {
   
   return (
     <div className="App">
-      {console.log("user de App", user)}
+     
       {user ? (
         <div>
           <Router>
@@ -59,6 +59,7 @@ function App() {
            <Router>
             <Switch>
               <Route>
+                <Header/>
                 <Login />
                 <SignUp />
               </Route>

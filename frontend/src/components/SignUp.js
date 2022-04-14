@@ -41,14 +41,7 @@ export default function SignUp() {
       history.push("/login");
 
    
-    console.log(`
-      Email: ${email}
-      Password: ${password}
-      Prenom: ${prenom}
-      Nom: ${nom}
-      Admin: ${admin}
-      
-    `);
+   
     alert('Vous venez de créer votre compte ! Notez bien votre email et Mot de passe !');
     
     event.preventDefault();
@@ -65,11 +58,10 @@ export default function SignUp() {
         // image: image
       }),
     };
-    console.log("body", requestOptions)
+    
     fetch("http://localhost:3000/auth/signup", requestOptions)
       .then((response) => {
-        console.log(response.json());
-        console.log(response)
+        
         if (response.ok) {
       
      // window.location = '/home';

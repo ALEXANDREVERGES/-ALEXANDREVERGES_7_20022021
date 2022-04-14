@@ -16,14 +16,18 @@ function Delete(){
              alert('Votre compte est supprimé ! A bienôt !')
          }) 
           .catch((error) => console.log(error));
+          dispatch({ type: "SETUSER", user: null });
+
+          
     }
+
 
     return (
         <div className="container_delete">
             <div className="delete">
                 <div className="margin_delete">Supprimer mon compte:</div>
                 <Link className="nonoui" to="/profil">Non</Link>
-                <Link className="nonoui" onClick={deleteHandler} to="/login">Oui</Link>
+                <div className="nonoui" onClick={deleteHandler}>Oui</div>
             </div>
         </div>
     )

@@ -12,7 +12,7 @@ router.get('/get/commentaire/:id',postCtrl.getOnePost);
 router.delete('/delete/:id',postCtrl.deleteCom)
 router.delete('/delete/compost/:id',postCtrl.deleteComPost)
 router.post('/post/com',postCtrl.createComPost);
-router.get('/get/post/com/:idpost', postCtrl.getPostCom);
+router.get('/get/post/com', postCtrl.getPostCom);
 router.get('/get/onepost/:id',postCtrl.getOneComPost)
 router.put('/update/:id', postCtrl.updatePost);
 

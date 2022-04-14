@@ -8,10 +8,18 @@
 
 .imgAvatar{
    
-    border: 1px solid black;
     background-size: cover;
     width: 100px;
     height: 100px;
-    border: 1px solid blueviolet;
     border-radius: 50px;
+}
+/* input{
+    width: 150px;
+} */
+form{
+    display: flex;
+    flex-direction: column;
+}
+.btnAvatar{
+    width: 160px;
 }

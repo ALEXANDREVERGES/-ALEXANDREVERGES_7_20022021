@@ -1,5 +1,5 @@
 .title{
-    color: white;
+    color: blueviolet;
     font-size: 20px;
     font-weight: bold;
     cursor: pointer;
@@ -7,7 +7,7 @@
 
 .nav{
     width: 80%;
-    height: 50px;
+    height: 60px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -17,7 +17,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: blueviolet;
+    background-color: rgb(223, 223, 223);
+    border-bottom: 1px solid rgb(199, 196, 196);
     box-shadow: -3px 1px 13px 0px rgba(0,0,0,0.75);
 }
 #userBdd{
@@ -31,9 +32,11 @@
 justify-content: space-around;
 }
 .navBtn{
-
+display: flex;
+justify-content: center;
+align-items: center;
 margin-left: 15px;
-color: white;
+color: black;
 font-weight: bold;
 cursor: pointer;
 font-size: 20px;
@@ -49,4 +52,13 @@ font-size: 20px;
 }
 .spandate{
     color: white;
+}
+.imgNav{
+    background-size: cover;
+    width: 35px;
+    height: 35px;
+    clip-path:ellipse(50% 50%);
+    border-radius: 50px;  
+    background-size: cover;
+    background-position: top center;
 }

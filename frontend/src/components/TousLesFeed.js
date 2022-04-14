@@ -8,45 +8,71 @@ import Feed from '../components/Feed'
 
 function TousLesFeed() {
 const [commentaires, setCommentaires] = useState([]);
-const [{token}, dispatch] = UseDataLayer();
+const [{token, user}, dispatch] = UseDataLayer();
+
+// function deletePost(){
+//  const id = commentaires.id;
+//  console.log(id);
+//     const delpost = {
+//       method: "DELETE",
+//      headers: { "Content-Type": "application/json" }
+//     }
   
-    console.log("token de tous les feeds", token);
+//     fetch(`http://localhost:3000/api/delete/${id}`,delpost, 
+//   )
+//    .then((res) => {
+     
+//     //  console.log("res", res)
+//      window.location="/home"
+//    }) .catch((error) => console.log(error));
+
+  
+  
+
+//   }
+
+
+
+  
+    
     useEffect(() => {
       fetch(`http://localhost:3000/api/get/commentaire`, {
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
           },
         })
           .then((res) => res.json())
           .then((data) => {
             if (data) {
-              console.log("data", data);
+              
               setCommentaires(data);
-              //  window.location.reload();
+             
             }
-          })
-          return (data) => {
-            data = false;
+            if (!data) {
+              return;
+            }
+          });
+        //  console.log("useEffect")
+    },[commentaires]);
 
-          };
-    },[commentaires])
 
     
-      
-        
-    
-    // console.log("commentaires--->", commentaires)
-  
-
-
   return (
     <div>
 
      {commentaires.map(feed=> 
-      (<Feed key={feed.id} message={feed.commentaire} prenom={feed.prenom} nom={feed.nom} date={feed.time} image={require(`../images/${feed.images}`)} />))}    
+      (
+      <Feed id={feed.id} message={feed.commentaire} prenom={feed.prenom} nom={feed.nom} date={feed.time} image={require(`../images/${feed.images}`)}/>
+      
+      
+      
+      )
+      )}  
+      
     </div>
   );
 }
+
+
 
 export default TousLesFeed

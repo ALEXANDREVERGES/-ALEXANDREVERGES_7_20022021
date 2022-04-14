@@ -109,11 +109,12 @@ exports.login = (req, res) => {
   const nom = req.body.nom;
   const prenom = req.body.prenom;
   const email = req.body.email;
-  const password= req.body.password;
-
+ 
+console.log("req.params---->", req.params.iduser)
   const id = {
     iduser: req.params.iduser
    } ;
+
    
    db.query("UPDATE user SET  nom=?, prenom=?, email=? WHERE iduser=? ", [nom, prenom, email, id["iduser"] ], (err, result)=>{
      
@@ -133,7 +134,7 @@ exports.login = (req, res) => {
 exports.modifyAvatar= (req, res) => {
   try{
 const avatar = req.body.avatar;
-let uploadPath = 'C:/Users/33629/Documents/groupomania/frontend/src' + '/images/' + avatar;
+let uploadPath = avatar;
 
   const id = {
     iduser: req.params.iduser

@@ -11,12 +11,13 @@ function Profil() {
     function modification(){
         window.location.href="/modification"
       }
+      const avatarImage = user.avatar?user.avatar: "default-avatar.jpg";
   return (
     <div className="container_profil">
     <form className="profil" >
         <div className="container_desc">
             <div className="container_photo">
-                <img src={user.avatar}/>
+                <img className='imgProfil' src={require(`../images/${avatarImage}`)}/>
                 <div className="text">Groupomania</div>
                 
             </div>
@@ -38,7 +39,7 @@ function Profil() {
             </div>
         </div>
         <div>
-            <Link to="/avatar"><button className="btnModif"  >Modifier avatar</button> </Link>
+            <Link to="/avatar"><button className="btnModifAvatar"  >Modifier avatar</button> </Link>
            <Link to="/modification"> <button className="btnModif"  >Mofifier profil</button></Link>
             <Link to="/delete"><button className="btnModif">Supprimer compte</button></Link>
             </div>

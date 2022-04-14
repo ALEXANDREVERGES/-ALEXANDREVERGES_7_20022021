@@ -8,7 +8,7 @@ import UseDataLayer from "../AuthProvider";
 function Post(){
   const [{user}, dispatch] = UseDataLayer();
    
-    // console.log("date--->", date)
+    
     var d = new Date();
     var date = d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate();
     var hours = d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
@@ -29,7 +29,7 @@ function Post(){
           prenom: user.prenom,
           time: fullDate,
         };
-        console.log("obj.images", obj.images);
+       
         axios
           .post("http://localhost:3000/api/post", obj, {
             headers: {
@@ -39,7 +39,7 @@ function Post(){
             },
           })
           .then((res) => {
-            console.log("response--->", res);
+            
             if (res.status === 200) {
               // window.location.reload();
               //  window.location = "/home";
@@ -74,7 +74,7 @@ function Post(){
             </label>
             <form
               method="POST"
-              enctype="multipart/form-data"
+              encType="multipart/form-data"
               action="http://localhost:3000/upload"
             >
               <input
@@ -85,7 +85,7 @@ function Post(){
                 id="image"
               />
 
-              <input type="submit" value="Valider votre image" /> 
+              <input type="submit" value="Téléchargez votre image" /> 
             </form>
             <button type="submit" className="btnPublier">
               <FontAwesomeIcon icon={faPaperPlane} /> Publier
