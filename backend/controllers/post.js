@@ -14,6 +14,7 @@ exports.createPost = (req, res) => {
   const time = req.body.time;
   const nom = req.body.nom;
   const prenom = req.body.prenom;
+ 
 
    console.log("uploadPath", uploadPath)
   db.query("INSERT INTO post (commentaire, iduser, time, nom, prenom, images) VALUES(?,?,?,?,?,?)",[commentaire, iduser, time, nom, prenom, uploadPath], (err, results) => {
@@ -36,6 +37,7 @@ exports.getPost = (req, res) => {
   console.log(req)
 //console.log("req.params--getPost-->", req.params)
   db.query("SELECT * FROM post INNER JOIN user ON post.iduser = user.iduser ORDER BY time DESC" , (err, result)=> {
+    // db.query("SELECT * FROM post ORDER BY time DESC" , (err, result)=> {
     if(err){
    //   console.log(err)
     } else {
@@ -102,8 +104,8 @@ exports.getPost = (req, res) => {
        //console.log("req.params--getPost-->", req.params)
       const id = req.params.idpost;
       console.log(id)
-        //  db.query("SELECT * FROM comPost INNER JOIN user ON comPost.iduser = user.iduser WHERE idpost=? ORDER BY id DESC",[id],(err, result)=> {
-          db.query("SELECT * FROM comPost" ,(err, result)=> {
+         db.query("SELECT * FROM comPost INNER JOIN user ON comPost.iduser = user.iduser WHERE idpost=? ORDER BY id DESC",[id],(err, result)=> {
+          //db.query("SELECT * FROM comPost" ,(err, result)=> {
            if(err){
           //   console.log(err)
            } else {

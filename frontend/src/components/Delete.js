@@ -2,13 +2,13 @@ import React from "react";
 import{ Link } from "react-router-dom";
 import UseDataLayer from "../AuthProvider";
 import '../styles/Delete.css';
-
+const localstoragetoken = JSON.parse(localStorage.getItem("userlog"));
 function Delete(){
     const [{user}, dispatch] = UseDataLayer();
     const deleteHandler = async () => {
         const delcom = {
             method: "DELETE",
-           headers: { "Content-Type": "application/json" }
+           headers: { "Content-Type": "application/json", 'Authorization': `Bearer ${localstoragetoken}` }
           }
          
          fetch(`http://localhost:3000/auth/delete/${user.iduser}`, delcom)

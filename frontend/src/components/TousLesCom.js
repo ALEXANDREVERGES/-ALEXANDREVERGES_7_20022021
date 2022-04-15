@@ -9,19 +9,20 @@ import Commentaires from '../components/Commentaires'
 function TousLesCom() {
     const [postCommentaires, setPostCommentaires] = useState([]);
     const [{token, user}, dispatch] = UseDataLayer();
-
+    const localstoragetoken = JSON.parse(localStorage.getItem("userlog"));
 useEffect(() => {
     fetch(`http://localhost:3000/api/get/post/com`, 
     {
       headers:
       {
         'Content-Type': 'application/json',
+        'Authorization': `Bearer ${localstoragetoken}`
       }
     })
     .then ((res) => res.json())  
     .then ((data) => {
       if (data) {
-      // console.log("data", data) 
+       console.log("datatouslescom--->", data) 
        setPostCommentaires(data);
       
       }
@@ -37,7 +38,7 @@ useEffect(() => {
 
      {postCommentaires.map(commentaires=> 
       (
-      <Commentaires key={postCommentaires.id} iduser={postCommentaires.iduser} time={postCommentaires.time} commentaires={postCommentaires.commentaires} idpost={postCommentaires.idpost}/>,
+      <Commentaires idcom={postCommentaires.id} iduser={postCommentaires.iduser} time={postCommentaires.time} commentaires={postCommentaires.commentaires} idpost={postCommentaires.idpost}/>,
        console.log(commentaires)
       )
       )}  

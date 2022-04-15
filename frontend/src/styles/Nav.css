@@ -17,9 +17,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgb(223, 223, 223);
+    background-color: rgb(54, 54, 54);
     border-bottom: 1px solid rgb(199, 196, 196);
     box-shadow: -3px 1px 13px 0px rgba(0,0,0,0.75);
+    border-bottom: 1px solid white;
 }
 #userBdd{
     color: white;
@@ -29,19 +30,31 @@
 .container_nav{
     width: 200px;
     display: flex;
-justify-content: space-around;
+    justify-content: space-around;
+   
 }
 .navBtn{
 display: flex;
 justify-content: center;
 align-items: center;
 margin-left: 15px;
-color: black;
+color: white;
 font-weight: bold;
 cursor: pointer;
 font-size: 20px;
 }
-.navBtn:hover{
+.logoTitle{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid white;
+    border-radius: 50%;
+    padding-left: 10px;
+    padding-right: 10px;
+    height: 50px;
+    background-color: white;
+}
+/* .navBtn:hover{
     color: blueviolet;
     border: 1px solid white;
     padding: 3px;
@@ -49,7 +62,7 @@ font-size: 20px;
     border-radius: 5px;
 
 
-}
+} */
 .spandate{
     color: white;
 }

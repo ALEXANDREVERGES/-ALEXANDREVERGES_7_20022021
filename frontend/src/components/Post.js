@@ -3,7 +3,7 @@ import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 import UseDataLayer from "../AuthProvider";
-
+import '../styles/Post.css';
 
 function Post(){
   const [{user}, dispatch] = UseDataLayer();
@@ -17,10 +17,12 @@ function Post(){
     // const id = user.results.results[0].iduser;
       const [post, setPost] = useState("");
       const [photo, setPhoto] = useState("");
+      
     
       const postSubmit = (event) => {
         event.preventDefault();
          var image = document.getElementById("image").files[0].name;
+        //  const avatarImage = user.avatar?user.avatar: "default-avatar.jpg";
         const obj = {
           commentaire: post,
           iduser: user.iduser,
@@ -28,13 +30,15 @@ function Post(){
           nom: user.nom,
           prenom: user.prenom,
           time: fullDate,
+          
         };
-       
+        const localstoragetoken = JSON.parse(localStorage.getItem("userlog"));
         axios
           .post("http://localhost:3000/api/post", obj, {
             headers: {
               Accept: "application/json",
               "Content-Type": "application/json",
+              'Authorization': `Bearer ${localstoragetoken}`
              
             },
           })
@@ -42,7 +46,7 @@ function Post(){
             
             if (res.status === 200) {
               // window.location.reload();
-              //  window.location = "/home";
+                // window.location = "/home";
             }
           })
           .catch((error) => console.log(error));
@@ -73,23 +77,27 @@ function Post(){
               />
             </label>
             <form
+              className="btnPostImg"
               method="POST"
               encType="multipart/form-data"
               action="http://localhost:3000/upload"
             >
-              <input
-                type="file"
-                accept="image/*"
-                name="IMG"
-                onChange={(e) => setPhoto(e.target.value)}
-                id="image"
-              />
+              <div className="btnPostImg">
+                <input
+                  type="file"
+                  accept="image/*"
+                  name="IMG"
+                  onChange={(e) => setPhoto(e.target.value)}
+                  id="image"
+                  className="inputValiderImg"
+                />
 
-              <input type="submit" value="Téléchargez votre image" /> 
+                <input className="inputValiderImg" type="submit" value="Téléchargez votre image" />
+              </div>
             </form>
             <button type="submit" className="btnPublier">
-              <FontAwesomeIcon icon={faPaperPlane} /> Publier
-            </button>  
+              <FontAwesomeIcon icon={faPaperPlane} className="faPaperIcon" /> Publier
+            </button>
           </form>
         </div>
       );

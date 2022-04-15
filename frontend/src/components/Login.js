@@ -1,9 +1,11 @@
+import { useCookies } from 'react-cookie';
 import '../styles/LogSign.css';
 import React, { useState } from 'react';
 import{ Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import UseDataLayer from '../AuthProvider';
 import ('../components/Nav.js')
+
 
 export default function Login() {
 
@@ -12,7 +14,7 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [{user, token}, dispatch] = UseDataLayer();
-
+  const [cookies, setCookie] = useCookies(['utilisateur']);
   const loginSubmit = (event) => {
 
     event.preventDefault();
@@ -29,7 +31,10 @@ export default function Login() {
     .then(response => response.json())
     .then(function(res) {
       if(res.token && res.results){
-        localStorage.setItem("userlog", JSON.stringify(res));
+        console.log("res", res)
+        setCookie("utilisateur", res.results,{path:'/'}, 30);
+        localStorage.setItem("userlog", JSON.stringify(res.token));
+        localStorage.setItem("userIduser", JSON.stringify(res.iduser));
         
         
         if (!res) {
@@ -44,7 +49,7 @@ export default function Login() {
           token: res.token,
         });
         
-        history.push("/");
+         
       } else{
     alert('Mauvais email ou mot de passe !')   
    

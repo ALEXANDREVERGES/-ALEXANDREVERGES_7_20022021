@@ -25,7 +25,7 @@ button{
 }
 .formulaire1{
     width: 100%;
-   
+    
     padding-top: 10px;
     padding-bottom: 10px;
     display: flex;
@@ -44,7 +44,7 @@ button{
     margin-right: -20px;
 }
 .labelHome{
-    color: blueviolet;
+    color: white;
     font-size: 20px;
     font-weight: bold;
 }

@@ -11,7 +11,7 @@ function Modification(){
     let history = useHistory();
   const photoSubmit = (event) => {
    
-    history.push('/profil');
+    
     
       const regexName =/^(([a-zA-ZÀ-ÿ]+[\s\-]{1}[a-zA-ZÀ-ÿ]+)|([a-zA-ZÀ-ÿ]+))$/;
       const regexMail =/^[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]{2,}\.[a-z]{2,4}$/;
@@ -36,9 +36,10 @@ function Modification(){
      {
       event.preventDefault();
       // var avatar = document.getElementById("avatar").files[0].name;
+      const localstoragetoken = JSON.parse(localStorage.getItem("userlog"));
       const formModify = {
           method: "PUT",
-          headers: { "Content-Type": "application/json" },
+          headers: { "Content-Type": "application/json",  'Authorization': `Bearer ${localstoragetoken}` },
           body: JSON.stringify({
             
             nom: nom1,
@@ -52,7 +53,7 @@ function Modification(){
         fetch(`http://localhost:3000/auth/modification/${user.iduser}`, formModify)
         
           .then((res) => {
-         
+            history.push('/');
           })
           .catch((error) => console.log(error));
           

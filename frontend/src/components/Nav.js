@@ -13,17 +13,43 @@ function Nav() {
 const [{user}, dispatch] = UseDataLayer();
 
 const avatarImage = user.avatar?user.avatar: "default-avatar.jpg";
+const localstorageIduser = JSON.parse(localStorage.getItem("userIduser"));
+const localstoragetoken = JSON.parse(localStorage.getItem("userlog"));
+
+
+useEffect(()=>{
+  fetch(`http://localhost:3000/auth/get/${localstorageIduser}`, {
+    headers: {
+      "Content-Type": "application/json",
+      'Authorization': `Bearer ${localstoragetoken}`
+    },
+  })
+  .then((res) => res.json())
+          .then((data) => {
+            if (data) {
+              console.log("data-->NAV", data);
+              localStorage.setItem("userlogIn", JSON.stringify(data));
+            }
+            if (!data) {
+              return;
+            }
+          });
+})
+
 
      
   return (
     <div>
       <div className="container-nav">
         <div className="nav">
-          <Link to="/">
-            <h2 className="title">Groupomania</h2>{" "}
-          </Link>
+          <div className='logoTitle'>
+            <Link to="/">
+              <h2 className="title">Groupomania</h2>{" "}
+            </Link>
+          </div>
           <h2 className="navBtn">
-           <img className="imgNav" src={require(`../images/${avatarImage}`)}/> {user.prenom} {user.nom}
+            <img className="imgNav" src={require(`../images/${avatarImage}`)} />{" "}
+            {user.prenom} {user.nom}
           </h2>
 
           <div className="container_nav">

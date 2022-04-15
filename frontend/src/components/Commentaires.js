@@ -4,11 +4,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPaperPlane, faTrash } from '@fortawesome/free-solid-svg-icons';
 import UseDataLayer from '../AuthProvider';
 
-const admin = 1;
+const localstoragetoken = JSON.parse(localStorage.getItem("userlog"));
 
 
 
-function Commentaires({name, iduser, time, commentaire, date, idpost}) {
+function Commentaires({name, time, commentaire, date,  idpost}) {
+  // console.log("idpost", idpost)
   const [comPost, setComPost] = useState("");
   const [{user}, dispatch] = UseDataLayer();
  //****************************************ENVOYER COM  */
@@ -22,19 +23,19 @@ var fullDate = date+' '+hours;
 
   const formComShow = {
     method: "POST",
-    headers: { "Content-Type": "application/json"},
+    headers: { "Content-Type": "application/json", 'Authorization': `Bearer ${localstoragetoken}`},
     body: JSON.stringify({
       commentaires:comPost,
-      iduser:"",
+      iduser:user.iduser,
       time:fullDate,
-      // idpost:key
+      idpost:idpost
     })
   }
   console.log("formComShow--->", formComShow)
     fetch("http://localhost:3000/api/post/com", formComShow)
           
             .then((res) => {
-           
+           console.log("rescommentaires",)
               
             })
             .catch((error) => console.log(error));
@@ -47,7 +48,7 @@ var fullDate = date+' '+hours;
         <div className="container_cardCom1">
           <div className="icon_cardcom">
             <div className="nameCom">{name}</div>
-            {admin ? <FontAwesomeIcon icon={faTrash} /> : <div></div>}
+            {user?.admin ? <FontAwesomeIcon icon={faTrash} /> : <div></div>}
           </div>
           <div className="date_cardcom">
             <div className="dateheureucom">{date}</div>

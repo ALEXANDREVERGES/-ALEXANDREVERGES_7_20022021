@@ -1,19 +1,22 @@
 import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react'
+import { useHistory } from 'react-router-dom';
 import UseDataLayer from "../AuthProvider";
 import '../styles/Avatar.css';
 
 function Avatar() {
   const [{ user }, dispatch] = UseDataLayer();
   const avatarImage = user.avatar?user.avatar: "default-avatar.jpg";
-  
+  const localstoragetoken = JSON.parse(localStorage.getItem("userlog"));
+  let history = useHistory();
   const avatarSubmit = (event) => {
     event.preventDefault();
     var avatar = document.getElementById("image").files[0].name;
+    
       const modifyAvatar = {
         method: "PUT",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json", 'Authorization': `Bearer ${localstoragetoken}` },
         body: JSON.stringify({
           avatar: avatar,
         }),
@@ -22,7 +25,9 @@ function Avatar() {
 
   fetch(`http://localhost:3000/auth/modification/avatar/${user.iduser}`, modifyAvatar)
     .then((res) => {
-      alert('Vous venez de changer votre avatar !')
+      alert('Vous venez de changer votre avatar !');
+      history.push('/');
+      
     })
     .catch((error) => console.log(error));
    dispatch({

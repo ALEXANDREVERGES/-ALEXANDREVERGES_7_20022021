@@ -5,19 +5,18 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {AuthProvider} from './AuthProvider';
 import reducer, { initialState } from './Reducer';
-
+import { CookiesProvider } from 'react-cookie';
 
 
 ReactDOM.render(
-  <React.StrictMode>   
-    <AuthProvider 
-    initialState={initialState}
-    reducer ={reducer}
-    >
-      <App />
-    </AuthProvider>
+  <React.StrictMode>
+    <CookiesProvider>
+      <AuthProvider initialState={initialState} reducer={reducer}>
+        <App />
+      </AuthProvider>
+    </CookiesProvider>
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
 
 // If you want to start measuring performance in your app, pass a function

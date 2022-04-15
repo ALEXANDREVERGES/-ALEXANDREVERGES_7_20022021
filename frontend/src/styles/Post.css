@@ -1,0 +1,25 @@
+.btnPublier{
+    color: black;
+}
+.btnPostImg{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+.inputValiderImg{
+    width: 170px;
+    height: 25px;
+    margin-bottom: 10px;
+}
+.faPaperIcon{
+    color: blueviolet;
+}
+.formulaire1{
+    background-color: rgb(54, 54, 54);
+    border-bottom: 1px solid white;
+}
+.pos-form1{
+    border: none;
+}
