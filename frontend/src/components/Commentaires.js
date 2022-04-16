@@ -34,7 +34,7 @@ const localstoragetoken = JSON.parse(localStorage.getItem("userlog"));
   console.log("formComShow--->", formComShow)
     fetch(`http://localhost:3000/api/post/com/${idpost}`, formComShow) 
             .then((res) => {
-              //  console.log("rescommentaires",)
+              
             })
             .catch((error) => console.log(error));
     
