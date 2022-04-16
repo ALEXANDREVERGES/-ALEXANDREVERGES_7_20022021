@@ -10,7 +10,8 @@ function Avatar() {
   const avatarImage = user.avatar?user.avatar: "default-avatar.jpg";
   const localstoragetoken = JSON.parse(localStorage.getItem("userlog"));
   let history = useHistory();
-  console.log("userAvatar", user)
+  
+  
   const avatarSubmit = (event) => {
     event.preventDefault();
     history.push('/');
