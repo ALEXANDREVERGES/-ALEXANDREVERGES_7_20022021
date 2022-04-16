@@ -10,6 +10,7 @@ function TousLesCom() {
     const [postCommentaires, setPostCommentaires] = useState([]);
     const [{token, user}, dispatch] = UseDataLayer();
     const localstoragetoken = JSON.parse(localStorage.getItem("userlog"));
+    console.log("userTousLesCom", user)
 useEffect(() => {
     fetch(`http://localhost:3000/api/get/post/com`, 
     {
@@ -22,7 +23,7 @@ useEffect(() => {
     .then ((res) => res.json())  
     .then ((data) => {
       if (data) {
-       console.log("datatouslescom--->", data) 
+        // console.log("datatouslescom--->", data) 
        setPostCommentaires(data);
       
       }
@@ -35,11 +36,20 @@ useEffect(() => {
     
   return (
     <div>
-
+    {console.log("postCommentaires", postCommentaires)}
      {postCommentaires.map(commentaires=> 
       (
-      <Commentaires idcom={postCommentaires.id} iduser={postCommentaires.iduser} time={postCommentaires.time} commentaires={postCommentaires.commentaires} idpost={postCommentaires.idpost}/>,
-       console.log(commentaires)
+      <Commentaires 
+      idcom={commentaires.id} 
+      iduser={commentaires.iduser} 
+      time={commentaires.time} 
+      commentaires={commentaires.commentaires} 
+      idpost={commentaires.idpost}
+      nom={commentaires.nom}
+      prenom={commentaires.prenom}
+      avatar={commentaires.avatar}
+      />
+       
       )
       )}  
       

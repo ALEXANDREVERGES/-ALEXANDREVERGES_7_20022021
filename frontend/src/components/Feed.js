@@ -103,16 +103,12 @@ function Feed({id, message, nom, prenom, date , image, avatar}){
             <br />
             <div className="choice">
               <div className="cardCom">
-                <div className="btnCom">
-               <FontAwesomeIcon className="icon" icon={faComment} onClick={getCom} onDoubleClick={()=> setUpdate(!showUpdate)} /> Voir les commentaires
+                <div onClick={getCom} onDoubleClick={()=> setUpdate(!showUpdate)}className="btnCom">
+               <FontAwesomeIcon className="icon" icon={faComment} onClick={getCom} onDoubleClick={()=> setUpdate(!showUpdate)}  /> Voir les commentaires
                {showUpdate=== true} 
                {showUpdate && (
                  
                   <Commentaires
-                 name={name}
-                 date={date}
-                 commentaire={commentaire}
-                 idpost={id}
                   />
                   
                   )}
@@ -122,7 +118,7 @@ function Feed({id, message, nom, prenom, date , image, avatar}){
           </div>
           <div className="cardCom2">
             {/* {console.log("status admin", user.admin)} */}
-            {user?.admin?(<button onClick={deletePost} className="DeletePost" ><FontAwesomeIcon className="faTrashIcon" icon={faTrash} />Supprimer Post</button> ): (<div></div>)} 
+            {user[0]?.admin?(<button onClick={deletePost} className="DeletePost" ><FontAwesomeIcon className="faTrashIcon" icon={faTrash} />Supprimer Post</button> ): (<div></div>)} 
            
 
           </div>

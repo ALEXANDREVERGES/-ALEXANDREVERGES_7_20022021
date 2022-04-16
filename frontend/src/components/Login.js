@@ -1,6 +1,6 @@
 import { useCookies } from 'react-cookie';
 import '../styles/LogSign.css';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import{ Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import UseDataLayer from '../AuthProvider';
@@ -10,7 +10,7 @@ import ('../components/Nav.js')
 export default function Login() {
 
  
-   let history = useHistory();
+  let history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [{user, token}, dispatch] = UseDataLayer();
@@ -18,7 +18,7 @@ export default function Login() {
   const loginSubmit = (event) => {
 
     event.preventDefault();
-  
+    history.push("/");
     const Options = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -31,14 +31,15 @@ export default function Login() {
     .then(response => response.json())
     .then(function(res) {
       if(res.token && res.results){
-        console.log("res", res)
-        setCookie("utilisateur", res.results,{path:'/'}, 30);
+        // console.log("res", res)
+        // setCookie("utilisateur", res.results,{path:'/'}, 30);
+        localStorage.setItem("user", JSON.stringify(res.results));
         localStorage.setItem("userlog", JSON.stringify(res.token));
         localStorage.setItem("userIduser", JSON.stringify(res.iduser));
         
         
         if (!res) {
-          return;
+          return alert('Mauvais email ou mot de passe !')  ;
         }
         dispatch({
           type: "SETUSER",
@@ -57,7 +58,17 @@ export default function Login() {
       })
     
     }
-
+    useEffect(() => {
+      const loggedInUser = localStorage.getItem("user");
+      if (loggedInUser) {
+        const foundUser = JSON.parse(loggedInUser);
+        dispatch({
+          type:"SETUSER",
+          user:foundUser,
+        });
+      }
+    }, []);
+console.log("userLogin", user)
     
     return (
         <div className="pos-form">

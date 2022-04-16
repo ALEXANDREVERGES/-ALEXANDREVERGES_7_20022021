@@ -17,7 +17,7 @@ function Post(){
     // const id = user.results.results[0].iduser;
       const [post, setPost] = useState("");
       const [photo, setPhoto] = useState("");
-      
+      console.log("userPost", user)
     
       const postSubmit = (event) => {
         event.preventDefault();
@@ -25,13 +25,14 @@ function Post(){
         //  const avatarImage = user.avatar?user.avatar: "default-avatar.jpg";
         const obj = {
           commentaire: post,
-          iduser: user.iduser,
+          iduser: user[0].iduser,
           images: image,
-          nom: user.nom,
-          prenom: user.prenom,
+          nom: user[0].nom,
+          prenom: user[0].prenom,
           time: fullDate,
           
         };
+        console.log("obj", obj)
         const localstoragetoken = JSON.parse(localStorage.getItem("userlog"));
         axios
           .post("http://localhost:3000/api/post", obj, {
@@ -45,8 +46,9 @@ function Post(){
           .then((res) => {
             
             if (res.status === 200) {
+              
               // window.location.reload();
-                // window.location = "/home";
+              //  window.location = "/";
             }
           })
           .catch((error) => console.log(error));

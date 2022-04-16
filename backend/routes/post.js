@@ -10,8 +10,9 @@ router.post('/post',auth,postCtrl.createPost);
 router.get('/get/commentaire',auth, postCtrl.getPost);
 router.get('/get/commentaire/:id',auth,postCtrl.getOnePost);
 router.delete('/delete/:id',auth,postCtrl.deleteCom)
-router.delete('/delete/compost/:id',auth,postCtrl.deleteComPost)
-router.post('/post/com',auth,postCtrl.createComPost);
+router.delete('/delete/compost/:idcom',auth,postCtrl.deleteComPost)
+router.post('/post/com/:idpost',auth,postCtrl.createComPost);
+router.get('/get/post/com',auth, postCtrl.getTousLesCom);
 router.get('/get/post/com/:idpost',auth, postCtrl.getPostCom);
 router.get('/get/onepost/:id',auth,postCtrl.getOneComPost)
 router.put('/update/:id',auth, postCtrl.updatePost);

@@ -8,10 +8,14 @@ const localstoragetoken = JSON.parse(localStorage.getItem("userlog"));
 
 
 
-function Commentaires({name, time, commentaire, date,  idpost}) {
-  // console.log("idpost", idpost)
+// function Commentaires({name, time, commentaire, date,  idpost}) {
+  function Commentaires({idcom, iduser, nom, prenom, time,commentaires, idpost }) {
+// console.log("commentaires----->", commentaires)
+  //  console.log("idpost--Commentaires.js-->", idpost)
+  //  console.log("iduser--Commentaires.js-->", iduser)
   const [comPost, setComPost] = useState("");
   const [{user}, dispatch] = UseDataLayer();
+  // console.log("idpost--commentaires.js-->", idpost)
  //****************************************ENVOYER COM  */
  const publierComPost = (event) => {
   event.preventDefault();
@@ -21,42 +25,58 @@ var date = d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate();
 var hours = d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
 var fullDate = date+' '+hours;
 
+
   const formComShow = {
     method: "POST",
     headers: { "Content-Type": "application/json", 'Authorization': `Bearer ${localstoragetoken}`},
     body: JSON.stringify({
       commentaires:comPost,
-      iduser:user.iduser,
-      time:fullDate,
-      idpost:idpost
+      iduser:user[0].iduser,
+      time:fullDate,    
     })
   }
   console.log("formComShow--->", formComShow)
-    fetch("http://localhost:3000/api/post/com", formComShow)
-          
+    fetch(`http://localhost:3000/api/post/com/${idpost}`, formComShow) 
             .then((res) => {
-           console.log("rescommentaires",)
-              
+              //  console.log("rescommentaires",)
             })
             .catch((error) => console.log(error));
     
   };
+  //********************************DELETE COM ******************/
+  const deleteCom= () => {
+   
+    const delcom = {
+        method: "DELETE",
+       headers: { "Content-Type": "application/json", 'Authorization': `Bearer ${localstoragetoken}` }
+      }
+     
+     fetch(`http://localhost:3000/api/delete/compost/${idcom}`, delcom)
+     .then((res) => {
+         alert('Le Commentaire est supprimé !')
+         document.location.reload();
+     }) 
+      .catch((error) => console.log(error));
+  
+
+      
+}
 
   return (
     <div className="allCom">
       <div className="cardCom1">
         <div className="container_cardCom1">
           <div className="icon_cardcom">
-            <div className="nameCom">{name}</div>
-            {user?.admin ? <FontAwesomeIcon icon={faTrash} /> : <div></div>}
+            <div className="nameCom">{nom} {prenom}</div>
+            {user[0]?.admin ? <FontAwesomeIcon icon={faTrash} onClick={deleteCom}  /> : <div></div>}
           </div>
           <div className="date_cardcom">
-            <div className="dateheureucom">{date}</div>
+            <div className="dateheureucom">{time}</div>
           </div>
 
           <div></div>
         </div>
-        <div className="commentaireCom">{commentaire}</div>
+        <div className="commentaireCom">{commentaires}</div>
       </div>
       <div className='inputButtonCom'>
          <input

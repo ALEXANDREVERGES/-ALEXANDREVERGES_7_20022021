@@ -10,23 +10,26 @@ function Avatar() {
   const avatarImage = user.avatar?user.avatar: "default-avatar.jpg";
   const localstoragetoken = JSON.parse(localStorage.getItem("userlog"));
   let history = useHistory();
+  console.log("userAvatar", user)
   const avatarSubmit = (event) => {
     event.preventDefault();
+    history.push('/');
+    document.location.reload();
     var avatar = document.getElementById("image").files[0].name;
     
       const modifyAvatar = {
         method: "PUT",
         headers: { "Content-Type": "application/json", 'Authorization': `Bearer ${localstoragetoken}` },
         body: JSON.stringify({
-          avatar: avatar,
+        avatar: avatar,
         }),
       };
 //  console.log("modifyAvatar", modifyAvatar)
 
-  fetch(`http://localhost:3000/auth/modification/avatar/${user.iduser}`, modifyAvatar)
+  fetch(`http://localhost:3000/auth/modification/avatar/${user[0].iduser}`, modifyAvatar)
     .then((res) => {
       alert('Vous venez de changer votre avatar !');
-      history.push('/');
+      
       
     })
     .catch((error) => console.log(error));
@@ -47,7 +50,8 @@ function Avatar() {
   return (
     <div>
       <div className='positionForm'>
-        <img className='imgAvatar' src={require(`../images/${avatarImage}`)} />
+        {/* <div>Votre avatar </div>
+        <img className='imgAvatar' src={require(`../images/${user[0].avatar}`)} /> */}
         <div >
           <form onSubmit={avatarSubmit}>
              <form

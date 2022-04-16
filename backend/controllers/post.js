@@ -82,8 +82,8 @@ exports.getPost = (req, res) => {
         console.log("commentaires---->", commentaires)
         console.log("iduser", iduser)
         const time = req.body.time;
-        const idpost=req.body.idpost;
-        console.log("idpost", idpost)
+        const idpost=req.params.idpost;
+        console.log("idpost---->", idpost)
         console.log(time)
         db.query("INSERT INTO comPost (commentaires, iduser, time,idpost) VALUES(?,?,?,?)",[commentaires, iduser,time,idpost], (err, results) => {
         if(err){
@@ -97,6 +97,23 @@ exports.getPost = (req, res) => {
         
       })
       }
+      //***************************************GET TOUS LES COM**************************** */
+      exports.getTousLesCom = (req, res) => {
+        // console.log(req)
+       //console.log("req.params--getPost-->", req.params)
+      
+     
+         db.query("SELECT * FROM post INNER JOIN compost ON post.iduser = compost.iduser ",(err, result)=> {
+          //db.query("SELECT * FROM comPost" ,(err, result)=> {
+           if(err){
+          //   console.log(err)
+           } else {
+             res.send(result)
+            console.log(result)
+           }
+         })
+        }
+
       /***************************************GET POST COM*****************/
 
       exports.getPostCom = (req, res) => {
@@ -141,12 +158,10 @@ exports.getPost = (req, res) => {
         //************************************************/
 
         exports.deleteComPost = (req, res) => {
-          const id = req.params.id;
-          const iduser = req.params.iduser;
-          const idcom = req.params.iduser;
-          console.log("id_com--deleteBack-->", id)
-          console.log("iduser--deleteBack-->", iduser)
-         db.query("DELETE FROM comPost WHERE id=?", [id] , (err, result)=> {
+          const idcom = req.params.idcom;
+          console.log("idcom--DELETECOMPOST-->", idcom)
+          
+         db.query("DELETE FROM comPost WHERE id=?", [idcom] , (err, result)=> {
             if(err){
           
             } else {

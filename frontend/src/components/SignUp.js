@@ -15,7 +15,7 @@ export default function SignUp() {
   const [prenom, setPrenom] = useState("");
   const [nom, setNom] = useState("");
   const admin = 0;
-  // const image = '';
+  const avatar = 'default-avatar.jpg';
 
   const signupHandler = (event) => {
     const regexName =/^(([a-zA-ZÀ-ÿ]+[\s\-]{1}[a-zA-ZÀ-ÿ]+)|([a-zA-ZÀ-ÿ]+))$/;
@@ -38,7 +38,7 @@ export default function SignUp() {
       (regexName.test(prenom) === true) &
       (regexName.test(nom) === true)  
     ) {
-      history.push("/login");
+      
 
    
    
@@ -55,7 +55,7 @@ export default function SignUp() {
         email: email,
         password: password,
         admin : admin,
-        // image: image
+        avatar: avatar
       }),
     };
     

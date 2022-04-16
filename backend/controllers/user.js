@@ -22,7 +22,7 @@ exports.signup = async (req, res) => {
      const email = req.body.email;
      const password = req.body.password;
      const admin = req.body.admin;
-    //  const image = req.body.image;
+     const avatar = req.body.avatar;
     // const iduser = req.body.iduser;
     // ====== Password encryption =========
     const salt = await bcrypt.genSalt(10);
@@ -32,7 +32,7 @@ exports.signup = async (req, res) => {
     };
    console.log(req.body)
     console.log(pass)
-    db.query("INSERT INTO user (nom, prenom, email, password, admin) VALUES (?,?,?,?,?)",[nom, prenom, email, pass["password"], admin], (err,result)=> {
+    db.query("INSERT INTO user (nom, prenom, email, password, admin, avatar) VALUES (?,?,?,?,?,?)",[nom, prenom, email, pass["password"], admin, avatar], (err,result)=> {
       console.log("results------>", result)
       console.log ("password",pass["password"])
       if (!result) {

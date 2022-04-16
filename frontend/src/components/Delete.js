@@ -1,22 +1,36 @@
 import React from "react";
-import{ Link } from "react-router-dom";
+import{ Link, useHistory } from "react-router-dom";
 import UseDataLayer from "../AuthProvider";
 import '../styles/Delete.css';
+
 const localstoragetoken = JSON.parse(localStorage.getItem("userlog"));
+
 function Delete(){
+    let history = useHistory();
     const [{user}, dispatch] = UseDataLayer();
     const deleteHandler = async () => {
+
+            localStorage.clear();
+            dispatch({
+              type: "SETUSER",
+              user: null
+          })
+          history.push('');
+          
         const delcom = {
             method: "DELETE",
            headers: { "Content-Type": "application/json", 'Authorization': `Bearer ${localstoragetoken}` }
           }
          
-         fetch(`http://localhost:3000/auth/delete/${user.iduser}`, delcom)
+         fetch(`http://localhost:3000/auth/delete/${user[0].iduser}`, delcom)
          .then((res) => {
              alert('Votre compte est supprimé ! A bienôt !')
          }) 
           .catch((error) => console.log(error));
-          dispatch({ type: "SETUSER", user: null });
+          dispatch({
+            type: "SETUSER",
+            user: null,
+          });
 
           
     }

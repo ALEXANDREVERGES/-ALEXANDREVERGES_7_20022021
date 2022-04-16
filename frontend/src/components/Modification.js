@@ -11,8 +11,9 @@ function Modification(){
     let history = useHistory();
   const photoSubmit = (event) => {
    
-    
-    
+    console.log("userModification", user)
+    history.push('/');
+    document.location.reload();
       const regexName =/^(([a-zA-ZÀ-ÿ]+[\s\-]{1}[a-zA-ZÀ-ÿ]+)|([a-zA-ZÀ-ÿ]+))$/;
       const regexMail =/^[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]{2,}\.[a-z]{2,4}$/;
       if(regexName.test(prenom1) === true){ 
@@ -50,10 +51,11 @@ function Modification(){
           
         };
         console.log(formModify)
-        fetch(`http://localhost:3000/auth/modification/${user.iduser}`, formModify)
+        fetch(`http://localhost:3000/auth/modification/${user[0].iduser}`, formModify)
         
           .then((res) => {
-            history.push('/');
+            // console.log("resModification", user[0].iduser);
+            // history.push('/');
           })
           .catch((error) => console.log(error));
           
