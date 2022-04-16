@@ -23,7 +23,7 @@ useEffect(() => {
     .then ((res) => res.json())  
     .then ((data) => {
       if (data) {
-        // console.log("datatouslescom--->", data) 
+        
        setPostCommentaires(data);
       
       }
