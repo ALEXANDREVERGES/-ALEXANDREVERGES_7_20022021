@@ -7,23 +7,19 @@ import UseDataLayer from '../AuthProvider';
 const localstoragetoken = JSON.parse(localStorage.getItem("userlog"));
 
 
-
-// function Commentaires({name, time, commentaire, date,  idpost}) {
   function Commentaires({idcom, iduser, nom, prenom, time,commentaires, idpost }) {
-// console.log("commentaires----->", commentaires)
-  //  console.log("idpost--Commentaires.js-->", idpost)
-  //  console.log("iduser--Commentaires.js-->", iduser)
+
   const [comPost, setComPost] = useState("");
   const [{user}, dispatch] = UseDataLayer();
-  // console.log("idpost--commentaires.js-->", idpost)
+  
  //****************************************ENVOYER COM  */
  const publierComPost = (event) => {
   event.preventDefault();
   
   var d = new Date();
-var date = d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate();
-var hours = d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
-var fullDate = date+' '+hours;
+  var date = d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate();
+  var hours = d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
+  var fullDate = date+' '+hours;
 
 
   const formComShow = {
@@ -57,9 +53,6 @@ var fullDate = date+' '+hours;
          document.location.reload();
      }) 
       .catch((error) => console.log(error));
-  
-
-      
 }
 
   return (
