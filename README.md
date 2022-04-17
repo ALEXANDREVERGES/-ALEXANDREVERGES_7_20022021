@@ -7,7 +7,7 @@ Le backend a été crée avec Node.js, Express.js et MySQL comme base de donnée
 Installation
 
 - Dans le terminal de VSCODE, situez-vous dans le dossier cd backend.
-- Démarrer npm install pour installer toutes les dependencies du backend.
+- Démarrer npm install pour installer toutes les dependences du backend.
 
 Development server
 
