@@ -4,8 +4,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
+    flex-direction: row;
+    cursor: pointer;
     
+}
+.nbCom{
+    margin-right: 100px;
 }
 .container_com{
     
@@ -13,18 +17,7 @@
     border-radius: 10px;
     padding: 10px;
 }
-/* .cardCom1{
-    width: 60%;
-    height: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    border: 1px solid rgb(241, 240, 240);
-    background-color: rgb(234, 213, 253);
-    padding: 10px;
-    border-radius: 10px;
-} */
+
 .container_cardCom{
     display: flex;
     justify-content: center;
@@ -115,4 +108,7 @@
 }
 .faTrashIcon{
     color: blueviolet;
+}
+img{
+    border: none;
 }

@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import UseDataLayer from '../AuthProvider';
-
+import '../styles/Responsive.css';
 
 function Modification(){ 
+
     const [{user}, dispatch] = UseDataLayer();
     const [email1, setEmail1] = useState("");
     const [prenom1, setPrenom1] = useState("");
     const [nom1, setNom1] = useState("");
     let history = useHistory();
+
   const photoSubmit = (event) => {
    
     console.log("userModification", user)
@@ -36,39 +38,31 @@ function Modification(){
      ) 
      {
       event.preventDefault();
-      // var avatar = document.getElementById("avatar").files[0].name;
       const localstoragetoken = JSON.parse(localStorage.getItem("userlog"));
       const formModify = {
           method: "PUT",
           headers: { "Content-Type": "application/json",  'Authorization': `Bearer ${localstoragetoken}` },
-          body: JSON.stringify({
-            
+          body: JSON.stringify({        
             nom: nom1,
             prenom: prenom1,
-            email: email1,
-            
-          })
-          
+            email: email1,    
+          })      
         };
-        console.log(formModify)
         fetch(`http://localhost:3000/auth/modification/${user[0].iduser}`, formModify)
         
           .then((res) => {
-            // console.log("resModification", user[0].iduser);
-            // history.push('/');
+  
           })
           .catch((error) => console.log(error));
-          
+        
       }else{
         alert('Veuillez remplir correctement le formulaire')
       }
   
   }
   return (
-    <div className="container_profil">
-      
-      <form className="profil1" onSubmit={photoSubmit}>
-        
+    <div className="container_profil">     
+      <form className="profil1" onSubmit={photoSubmit}>      
         <div className="container_desc1">
           <div className="container_info1">
             <div className="white">

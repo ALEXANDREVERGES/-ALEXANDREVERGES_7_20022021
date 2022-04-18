@@ -1,14 +1,10 @@
 import React, { useState } from "react";
 import '../styles/LogSign.css';
-
 import { Link, useHistory } from "react-router-dom";
-//import { toast } from "react-toastify";
-//const userRegistered = () => toast.success("Vous êtes bien enregistrés, vous pouvez vous connecter.");
+import '../styles/Responsive.css';
 
 export default function SignUp() {
-  // function login(){
-  //   window.location.href="/login"
-  // }
+
   let history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -37,15 +33,10 @@ export default function SignUp() {
       (regexMail.test(email) === true) &
       (regexName.test(prenom) === true) &
       (regexName.test(nom) === true)  
-    ) {
-      
-
-   
-   
-    alert('Vous venez de créer votre compte ! Notez bien votre email et Mot de passe !');
-    
+    ) {  
+    alert('Vous venez de créer votre compte ! Notez bien votre email et Mot de passe !');   
     event.preventDefault();
-  
+
     const requestOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -57,76 +48,65 @@ export default function SignUp() {
         admin : admin,
         avatar: avatar
       }),
-    };
-    
+    };   
     fetch("http://localhost:3000/auth/signup", requestOptions)
-      .then((response) => {
-        
-        if (response.ok) {
-      
-     // window.location = '/home';
+      .then((response) => {     
+        if (response.ok) {     
         }
       })
-      .catch((error) => console.log(error));
-      
+      .catch((error) => console.log(error));      
   }else{
     alert('Veuillez remplir correctement le formulaire')
   }
 }
 return (
   <div className="pos-form">
-<form className="formulaire" onSubmit={signupHandler} >
-<div className="choix">
-
-</div>
-<div className="espace-form"> Si vous n'avez pas de compte</div>
-  <h1 className="white1">S'inscrire</h1>
-
-  <label>
-    <input
-    id="prenom"
-    placeholder="Prénom"
-      name="prenom"
-      type="prenom"
-      
-      onChange={e => setPrenom(e.target.value)}
-      required />
-  </label>
-
-  <label>
-    <input
-    id="nom"
-    placeholder="Nom"
-      name="nom"
-      type="nom"
-      onChange={e => setNom(e.target.value)}
-      required />     
-  </label>
-  <label>
-    <input
-    placeholder="Email"
-      name="email"
-      type="email"
-      onChange={e => setEmail(e.target.value)}
-      required />
-  </label>
-  
-  <label>
-    <input
-    placeholder="Votre Mot de passe"
-      name="password"
-      type="password"
-      onChange={e => setPassword(e.target.value)}
-      required />
-  </label>
-
-
-  <button className="btnSins">S'inscrire</button>
-  <div className="white">Vous avez déjà un compte?</div>
- {/* <Link to="/login"><div>Se connecter</div></Link> */}
- <div>Se connecter</div>
-
-</form>
-</div>
+    <form className="formulaire" onSubmit={signupHandler}>
+      <div className="choix"></div>
+      <div className="espace-form"> Si vous n'avez pas de compte</div>
+      <h1 className="white1">S'inscrire</h1>
+      <label>
+        <input
+          id="prenom"
+          placeholder="Prénom"
+          name="prenom"
+          type="prenom"
+          onChange={(e) => setPrenom(e.target.value)}
+          required
+        />
+      </label>
+      <label>
+        <input
+          id="nom"
+          placeholder="Nom"
+          name="nom"
+          type="nom"
+          onChange={(e) => setNom(e.target.value)}
+          required
+        />
+      </label>
+      <label>
+        <input
+          placeholder="Email"
+          name="email"
+          type="email"
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
+      </label>
+      <label>
+        <input
+          placeholder="Votre Mot de passe"
+          name="password"
+          type="password"
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
+      </label>
+      <button className="btnSins">S'inscrire</button>
+      <div className="white">Vous avez déjà un compte?</div>
+      <div>Se connecter</div>
+    </form>
+  </div>
 );
 }

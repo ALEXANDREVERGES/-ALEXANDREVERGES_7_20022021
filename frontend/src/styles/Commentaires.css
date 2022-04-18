@@ -94,3 +94,12 @@
 .commentaireCom{
     font-size: 19px;
 }
+@media screen and (min-width: 360px) and (max-width: 560px){
+    .cardCom1{
+        width: 260px;
+    }
+    #post.textareaCom{
+        width: 240px;
+        margin-left:0px;
+    }
+}

@@ -23,15 +23,12 @@ exports.signup = async (req, res) => {
      const password = req.body.password;
      const admin = req.body.admin;
      const avatar = req.body.avatar;
-    // const iduser = req.body.iduser;
     // ====== Password encryption =========
     const salt = await bcrypt.genSalt(10);
     const passHash = await bcrypt.hash(password, salt);
     const pass= {
       password: passHash,
     };
-   console.log(req.body)
-    console.log(pass)
     db.query("INSERT INTO user (nom, prenom, email, password, admin, avatar) VALUES (?,?,?,?,?,?)",[nom, prenom, email, pass["password"], admin, avatar], (err,result)=> {
       console.log("results------>", result)
       console.log ("password",pass["password"])
@@ -39,14 +36,8 @@ exports.signup = async (req, res) => {
         res.status(200).json({ message: "Email déjà enregistré" });
       } else {
         res.status(201).json({
-           message: "Compte Créé !",
-         //  token: jwt.sign(
-         //   { userId: iduser },
-          //  `${process.env.JWT_RANDOM_TOKEN}`,
-           // { expiresIn: '24h' }
-          //)  
-          });
-          
+          message: "Compte Créé !",
+        });
       }
     });
   } catch (err) {
@@ -60,24 +51,13 @@ exports.signup = async (req, res) => {
 
 
 exports.login = (req, res) => {
-  //const nom = req.body.nom;
- // const prenom = req.body.prenom;
   const email = req.body.email;
   const password = req.body.password;
- // const iduser = req.params.iduser;
   const sql = `SELECT * FROM user WHERE email=?`
   db.query(sql, [email], (err, results) => {
-    
-   
     if (err) {
       return res.status(401).json({error: 'Utilisateur non trouvé !'})
     }
-    console.log(results)
-    
-   // console.log("req.params--->" , req.params)
-   // console.log ("password ----->",password ,"results.password---->", results[0].password)
-   // console.log ("results.iduser---->", results[0].iduser)
-   // console.log("req.body---->",req.body)
     bcrypt.compare(password, results[0].password) 
     .then(valid => {
       if(!valid) {
@@ -104,13 +84,9 @@ exports.login = (req, res) => {
 
  exports.modifyCount= (req, res) => {
   try{
- // console.log("req.params.id---->", id)
- console.log("req.body--->", req.body)
   const nom = req.body.nom;
   const prenom = req.body.prenom;
   const email = req.body.email;
- 
-console.log("req.params---->", req.params.iduser)
   const id = {
     iduser: req.params.iduser
    } ;
@@ -118,11 +94,9 @@ console.log("req.params---->", req.params.iduser)
    
    db.query("UPDATE user SET  nom=?, prenom=?, email=? WHERE iduser=? ", [nom, prenom, email, id["iduser"] ], (err, result)=>{
      
-   //  console.log("result--->", result)
      if(err) {
       console.log(err)
      }else {
-   // res.send(result)
     res.status(200).json({message: 'Modification effectuée !'})
      }
    })
@@ -135,18 +109,13 @@ exports.modifyAvatar= (req, res) => {
   try{
 const avatar = req.body.avatar;
 let uploadPath = avatar;
-
   const id = {
     iduser: req.params.iduser
    } ;
-   
    db.query("UPDATE user SET  avatar=? WHERE iduser=? ", [uploadPath, id["iduser"] ], (err, result)=>{
-     
-   //  console.log("result--->", result)
      if(err) {
       console.log(err)
      }else {
-   // res.send(result)
     res.status(200).json({message: 'Modification effectuée !'})
      }
    })
@@ -156,19 +125,14 @@ let uploadPath = avatar;
 };
 //************************************GET USER*******************************************************************/
 exports.getUser = (req, res) => {
-  //console.log("req.params--->", req.params)
-//console.log("req.body--->", req.body)
 const iduser= req.params.iduser;
-//console.log("iduser--->", iduser)
 const id = {
  iduser: req.params.iduser
 } 
 db.query("SELECT * FROM user WHERE iduser=?", id["iduser"], (err, result)=> {
-  if(err){
-    //console.log(err)
+  if(err){ 
   } else {
     res.send(result)
-   // console.log("result--->",result)
   }
 })
 }
@@ -178,7 +142,6 @@ const iduser = req.params.iduser;
 console.log("iduser--deleteBack-->", iduser)
 db.query("DELETE FROM user WHERE iduser=?", [iduser], (err, result)=> {
   if(err){
-
   } else {
     res.send(result)
   }

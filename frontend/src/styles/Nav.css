@@ -4,7 +4,13 @@
     font-weight: bold;
     cursor: pointer;
 }
-
+.navBtn_Name{
+    font-size: 20px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .nav{
     width: 80%;
     height: 60px;
@@ -34,6 +40,49 @@
     justify-content: space-around;
    
 }
+@media screen and (min-width: 359px) and (max-width: 460px){
+    .container-nav{
+        box-shadow: none;
+    }
+    #post{
+        margin-left: -50px;
+    }
+    .nav{
+        flex-direction:row-reverse;
+        margin-left: 0px;
+    }
+    .title{
+        font-size: 15px;
+    }
+    .imgNav{
+        display: none;
+    }
+    h2{
+        font-size: 18px;
+        margin-left: -10px;
+    }
+    .navBtn_Name{
+        font-size: 16px;
+        margin-left: -20px;
+        margin-right: 15px;
+        margin-right: 20px;
+    }
+    .feedMain{
+        display: flex;
+        justify-content: center;
+    }
+    .container_nom{
+        width: 90%;
+    }
+    .navBtn{
+        font-size: 20px;
+        margin-right: 10px;
+    }
+    .navDescription{
+        display: none;
+    }
+  
+}
 .navBtn{
 display: flex;
 justify-content: center;
@@ -42,7 +91,8 @@ margin-left: 15px;
 color: black;
 font-weight: bold;
 cursor: pointer;
-font-size: 20px;
+flex-direction: column;
+/* font-size: 20px; */
 }
 .logoTitle{
     display: flex;

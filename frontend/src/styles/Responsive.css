@@ -1,0 +1,38 @@
+@media screen and (min-width: 360px) and (max-width: 560px){
+   .nav{
+        font-size: 15px;
+    }
+ 
+    .formulaire1{
+        
+    }
+    .pos-form{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }
+    .container_post{
+        width: 70%;
+    }
+    .container_nom{
+        margin-left: 20px;
+    }
+    .btnPostImg{
+        width: 89%;
+    }
+    .container_nav{
+        margin-right: 50px;
+    }
+    .container_desc{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+   .container_profil{
+       font-size: 10px;
+   }
+  
+
+}

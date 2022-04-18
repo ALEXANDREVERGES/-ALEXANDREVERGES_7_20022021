@@ -5,13 +5,10 @@ function Header() {
  
     return (
         <div className='header'>
-            <div className='header-gpm'>
-                
+            <div className='header-gpm'>               
                 <h1>{title}</h1>  
             </div>    
-
-        </div>
-        
+        </div>      
     )
 }
 export default Header

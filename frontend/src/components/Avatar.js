@@ -4,8 +4,11 @@ import React from 'react'
 import { useHistory } from 'react-router-dom';
 import UseDataLayer from "../AuthProvider";
 import '../styles/Avatar.css';
+import '../styles/Responsive.css';
+
 
 function Avatar() {
+
   const [{ user }, dispatch] = UseDataLayer();
   const avatarImage = user.avatar?user.avatar: "default-avatar.jpg";
   const localstoragetoken = JSON.parse(localStorage.getItem("userlog"));
@@ -25,13 +28,10 @@ function Avatar() {
         avatar: avatar,
         }),
       };
-//  console.log("modifyAvatar", modifyAvatar)
 
   fetch(`http://localhost:3000/auth/modification/avatar/${user[0].iduser}`, modifyAvatar)
     .then((res) => {
-      alert('Vous venez de changer votre avatar !');
-      
-      
+      alert('Vous venez de changer votre avatar !');  
     })
     .catch((error) => console.log(error));
    dispatch({
@@ -51,12 +51,9 @@ function Avatar() {
   return (
     <div>
       <div className='positionForm'>
-        {/* <div>Votre avatar </div>
-        <img className='imgAvatar' src={require(`../images/${user[0].avatar}`)} /> */}
         <div >
           <form onSubmit={avatarSubmit}>
              <form
-            
             method="POST"
             encType="multipart/form-data"
             action="http://localhost:3000/upload"
@@ -71,10 +68,9 @@ function Avatar() {
             <input type="submit" value="Téléchargez votre image" />
           </form>
              <button type="submit" className="btnAvatar">
-              Changez votre avatar
+              Validez
             </button>   
-          </form>
-         
+          </form>        
         </div>
       </div>
     </div>
