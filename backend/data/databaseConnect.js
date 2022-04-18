@@ -5,14 +5,16 @@ const db = mysql.createConnection({
     host     : 'localhost',
     user     : 'root',
     password : '159Counterstrike13004',
-    database : "groupomania"
+    database : "groupomania",
+    timezone : 'Z'
   });
   var pool  = mysql.createPool({
     connectionLimit : 10,
     host            : 'localhost',
     user            : 'root',
     password        : '159Counterstrike13004',
-    database : "groupomania"
+    database        : "groupomania",
+    timezone        : 'Z'
   });
   
   pool.getConnection(function(err, connection) {

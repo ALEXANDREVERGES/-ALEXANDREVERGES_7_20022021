@@ -36,7 +36,7 @@ const localstoragetoken = JSON.parse(localStorage.getItem("userlog"));
           message={feed.commentaire}
           prenom={feed.prenom}
           nom={feed.nom}
-          date={feed.time}
+          dateTime={feed.time}
           image={require(`../images/${feed.images}`)}
           avatar={require(`../images/${feed.avatar}`)}
         />

@@ -19,7 +19,7 @@ function getAvatar(avatar) {
   }
 }
 
-function Feed({id, message, nom, prenom, date , image, avatar}){
+function Feed({id, message, nom, prenom, dateTime , image, avatar}){
   
   const [{user}, dispatch] = UseDataLayer();
   const [post, setPost] = useState([]);
@@ -41,7 +41,8 @@ function Feed({id, message, nom, prenom, date , image, avatar}){
         setComPost(data)    
        }
      }).catch((error) => console.log(error));   
- },[])
+     return post;
+ },[post]);
    
  
 
@@ -60,14 +61,14 @@ function Feed({id, message, nom, prenom, date , image, avatar}){
           setPost(data)    
          }
        }).catch((error) => console.log(error));   
-   }
+   };
     
  const publierComPost = (event) => {
   event.preventDefault(); 
   var d = new Date();
   var date = d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate();
   var hours = d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
-  var fullDate = date + hours;
+  var fullDate = date+' '+hours;
 
   const formComShow = {
     method: "POST",
@@ -110,7 +111,7 @@ function Feed({id, message, nom, prenom, date , image, avatar}){
               <div className="structureNom">
                 {prenom} {nom}{" "}
               </div>
-              <div className="structureNom1">{date}</div>
+              <div className="structureNom1">{dateTime}</div>
             </div>
           </div>
           <div className="container_com">
@@ -129,7 +130,10 @@ function Feed({id, message, nom, prenom, date , image, avatar}){
                 className="cardCom"
                 onClick={getCom}
                 onDoubleClick={() => setUpdate(!showUpdate)}
-              ><div className="detailCom">{comPost.length}</div>
+              >
+
+                <div className="detailCom">{showUpdate?<div></div> : comPost.length}</div>
+
                 <FontAwesomeIcon className="icon" icon={faComment} />{" "}
                
                 {showUpdate === true}
