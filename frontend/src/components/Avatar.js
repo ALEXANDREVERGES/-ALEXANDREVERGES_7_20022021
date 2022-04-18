@@ -68,7 +68,7 @@ function Avatar() {
             <input type="submit" value="Téléchargez votre image" />
           </form>
              <button type="submit" className="btnAvatar">
-              Validez
+              Valider
             </button>   
           </form>        
         </div>

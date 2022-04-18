@@ -67,7 +67,7 @@ function Feed({id, message, nom, prenom, date , image, avatar}){
   var d = new Date();
   var date = d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate();
   var hours = d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
-  var fullDate = date+' '+hours;
+  var fullDate = date + hours;
 
   const formComShow = {
     method: "POST",
