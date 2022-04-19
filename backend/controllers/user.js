@@ -30,8 +30,7 @@ exports.signup = async (req, res) => {
       password: passHash,
     };
     db.query("INSERT INTO user (nom, prenom, email, password, admin, avatar) VALUES (?,?,?,?,?,?)",[nom, prenom, email, pass["password"], admin, avatar], (err,result)=> {
-      console.log("results------>", result)
-      console.log ("password",pass["password"])
+     
       if (!result) {
         res.status(200).json({ message: "Email déjà enregistré" });
       } else {
@@ -77,8 +76,9 @@ exports.login = (req, res) => {
       })
       .catch(error => res.status(500).json({ error }));
   })
-  
   }
+
+  
    
  //*************************************MODIFICATION PROFIL**************************************************/
 
@@ -95,7 +95,7 @@ exports.login = (req, res) => {
    db.query("UPDATE user SET  nom=?, prenom=?, email=? WHERE iduser=? ", [nom, prenom, email, id["iduser"] ], (err, result)=>{
      
      if(err) {
-      console.log(err)
+    
      }else {
     res.status(200).json({message: 'Modification effectuée !'})
      }
@@ -114,7 +114,7 @@ let uploadPath = avatar;
    } ;
    db.query("UPDATE user SET  avatar=? WHERE iduser=? ", [uploadPath, id["iduser"] ], (err, result)=>{
      if(err) {
-      console.log(err)
+      
      }else {
     res.status(200).json({message: 'Modification effectuée !'})
      }
@@ -139,7 +139,7 @@ db.query("SELECT * FROM user WHERE iduser=?", id["iduser"], (err, result)=> {
 //*******************************DELETE USER *************************************************************/
 exports.deleteUser = (req, res) => {
 const iduser = req.params.iduser;
-console.log("iduser--deleteBack-->", iduser)
+
 db.query("DELETE FROM user WHERE iduser=?", [iduser], (err, result)=> {
   if(err){
   } else {

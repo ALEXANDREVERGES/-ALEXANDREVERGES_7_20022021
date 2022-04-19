@@ -17,7 +17,7 @@ function Profil() {
           <div className="container_photo">
             <img
               className="imgProfil"
-              alt="photo de profil"
+              alt=""
               src={require(`../images/${user[0].avatar}`)}
             />
             <div className="text">Groupomania</div>

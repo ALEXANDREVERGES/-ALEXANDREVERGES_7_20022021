@@ -5,16 +5,14 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {AuthProvider} from './AuthProvider';
 import reducer, { initialState } from './Reducer';
-import { CookiesProvider } from 'react-cookie';
+
 
 
 ReactDOM.render(
-  <React.StrictMode>
-    <CookiesProvider>
+  <React.StrictMode> 
       <AuthProvider initialState={initialState} reducer={reducer}>
         <App />
       </AuthProvider>
-    </CookiesProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );

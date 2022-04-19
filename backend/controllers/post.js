@@ -7,7 +7,7 @@ exports.createPost = (req, res) => {
   const commentaire = req.body.commentaire;
   const iduser = req.body.iduser;
    let images = req.body.images;
-   console.log("images", images)
+  //  console.log("images", images)
   // let uploadPath  = 'C:/Users/33629/Documents/groupomania/backend/images/' + images;
   // console.log("uploadPath----->",uploadPath)
   let uploadPath = images;
@@ -16,14 +16,14 @@ exports.createPost = (req, res) => {
   const prenom = req.body.prenom;
  
 
-   console.log("uploadPath", uploadPath)
+  //  console.log("uploadPath", uploadPath)
   db.query("INSERT INTO post (commentaire, iduser, time, nom, prenom, images) VALUES(?,?,?,?,?,?)",[commentaire, iduser, time, nom, prenom, uploadPath], (err, results) => {
   if(err){
     res.status(400).json({err});
   } 
  if(results){
      res.status(200).json({message : "Publication effectuée !" });
-     console.log("results", results)
+    //  console.log("results", results)
     
   
  }
@@ -34,7 +34,7 @@ exports.createPost = (req, res) => {
 
 
 exports.getPost = (req, res) => {
-  console.log(req)
+  // console.log(req)
 //console.log("req.params--getPost-->", req.params)
   db.query("SELECT * FROM post INNER JOIN user ON post.iduser = user.iduser ORDER BY time DESC" , (err, result)=> {
     // db.query("SELECT * FROM post ORDER BY time DESC" , (err, result)=> {
@@ -48,7 +48,7 @@ exports.getPost = (req, res) => {
  
   }
   exports.getOnePost = (req, res) => {
-     console.log(req)
+    //  console.log(req)
    //console.log("req.params--getPost-->", req.params)
    const id = req.params.id;
      db.query("SELECT * FROM post INNER JOIN comPost ON post.iduser = comPost.iduser WHERE id=?" , [id],(err, result)=> {
@@ -56,7 +56,7 @@ exports.getPost = (req, res) => {
       //   console.log(err)
        } else {
          res.send(result)
-        console.log(result)
+        // console.log(result)
        }
      })
     
@@ -79,12 +79,12 @@ exports.getPost = (req, res) => {
       exports.createComPost = (req, res) => {
         const commentaires = req.body.commentaires;
         const iduser = req.body.iduser;
-        console.log("commentaires---->", commentaires)
-        console.log("iduser", iduser)
+        // console.log("commentaires---->", commentaires)
+        // console.log("iduser", iduser)
         const time = req.body.time;
         const idpost=req.params.idpost;
-        console.log("idpost---->", idpost)
-        console.log(time)
+        // console.log("idpost---->", idpost)
+        // console.log(time)
         db.query("INSERT INTO comPost (commentaires, iduser, time,idpost) VALUES(?,?,?,?)",[commentaires, iduser,time,idpost], (err, results) => {
         if(err){
           res.status(400).json({err});
@@ -109,7 +109,7 @@ exports.getPost = (req, res) => {
           //   console.log(err)
            } else {
              res.send(result)
-            console.log(result)
+            // console.log(result)
            }
          })
         }
@@ -120,14 +120,14 @@ exports.getPost = (req, res) => {
         // console.log(req)
        //console.log("req.params--getPost-->", req.params)
       const id = req.params.idpost;
-      console.log(id)
+      // console.log(id)
          db.query("SELECT * FROM comPost INNER JOIN user ON comPost.iduser = user.iduser WHERE idpost=? ORDER BY id DESC",[id],(err, result)=> {
           //db.query("SELECT * FROM comPost" ,(err, result)=> {
            if(err){
           //   console.log(err)
            } else {
              res.send(result)
-            console.log(result)
+            // console.log(result)
            }
          })
         }
@@ -135,7 +135,7 @@ exports.getPost = (req, res) => {
         exports.updatePost= (req, res) => {
           try{
          // console.log("req.params.id---->", id)
-         console.log("req.body--->", req.body)
+        //  console.log("req.body--->", req.body)
           const commentaire = req.body.commentaire;
           const images = req.body.images;
           const iduser = req.body.iduser;
@@ -145,7 +145,7 @@ exports.getPost = (req, res) => {
              
            //  console.log("result--->", result)
              if(err) {
-              console.log(err)
+              // console.log(err)
              }else {
            // res.send(result)
             res.status(200).json({message: 'Modification effectuée !'})
@@ -159,7 +159,7 @@ exports.getPost = (req, res) => {
 
         exports.deleteComPost = (req, res) => {
           const idcom = req.params.idcom;
-          console.log("idcom--DELETECOMPOST-->", idcom)
+          // console.log("idcom--DELETECOMPOST-->", idcom)
           
          db.query("DELETE FROM comPost WHERE id=?", [idcom] , (err, result)=> {
             if(err){
@@ -180,7 +180,7 @@ exports.getPost = (req, res) => {
              //   console.log(err)
               } else {
                 res.send(result)
-               console.log(result)
+              //  console.log(result)
               }
             })
            

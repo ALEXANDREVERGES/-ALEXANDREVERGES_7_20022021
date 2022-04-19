@@ -55,7 +55,7 @@ useEffect(()=>{
           {nav.map((item) => (
             <div className="navBtn_Name">
               <img
-                alt="photo de profil"
+                alt=""
                 className="imgNav"
                 src={require(`../images/${item.avatar}`)}
               />{" "}

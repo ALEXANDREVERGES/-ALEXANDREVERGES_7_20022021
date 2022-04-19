@@ -96,10 +96,10 @@
 }
 @media screen and (min-width: 360px) and (max-width: 560px){
     .cardCom1{
-        width: 260px;
+        width: 230px;
     }
     #post.textareaCom{
-        width: 240px;
+        width: 200px;
         margin-left:0px;
     }
 }

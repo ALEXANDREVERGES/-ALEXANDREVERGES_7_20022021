@@ -105,7 +105,7 @@ function Feed({id, message, nom, prenom, dateTime , image, avatar}){
         <div className="container_post">
           <div className="container_nom">
             <div className="imgName">
-              <img className="imgFeedAvatar" alt="photo de profil" src={avatar} />
+              <img className="imgFeedAvatar" alt="" src={avatar} />
             </div>
             <div className="DateName">
               <div className="structureNom">
@@ -120,7 +120,7 @@ function Feed({id, message, nom, prenom, dateTime , image, avatar}){
             </div>
           </div>
           <div className="img">
-            <img alt="photo du post user" src={image} />
+            <img alt="" src={image} />
           </div>
           <div>
             <br />
@@ -179,7 +179,7 @@ function Feed({id, message, nom, prenom, dateTime , image, avatar}){
             {user[0]?.admin ? (
               <button onClick={deletePost} className="DeletePost">
                 <FontAwesomeIcon className="faTrashIcon" icon={faTrash} />
-                Supprimer Post
+                {''} Supprimer Post
               </button>
             ) : (
               <div></div>

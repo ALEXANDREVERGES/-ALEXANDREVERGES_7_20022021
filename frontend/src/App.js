@@ -15,14 +15,9 @@ import Avatar from './components/Avatar';
 
 function App() {
   const [{user}, dispatch] = UseDataLayer();
-  // const {user, setUser} = UseDataLayer();
-//  setUser(null);
 
-
-  
   return (
-    <div className="App">
-     
+    <div className="App">   
       {user ? (
         <div>
           <Router>
@@ -49,9 +44,6 @@ function App() {
               </Route>
             </Switch>
           </Router>
-          {/* <Nav />
-          <Profil />
-          <Home /> */}
         </div>
       ) : (
         <div>
@@ -64,8 +56,6 @@ function App() {
               </Route>
             </Switch>
           </Router>  
-          {/* <Login />
-          <SignUp /> */}
         </div>
       )}
     </div>

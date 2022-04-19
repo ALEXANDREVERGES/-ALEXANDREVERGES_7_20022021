@@ -13,7 +13,7 @@ router.post('/signup', passwordControl, userCtrl.signup);
 router.post('/login',  userCtrl.login);
 router.put('/modification/:iduser',auth,userCtrl.modifyCount );
 router.put('/modification/avatar/:iduser',auth,userCtrl.modifyAvatar );
-router.get('/get/:iduser', userCtrl.getUser)
+router.get('/get/:iduser',auth, userCtrl.getUser)
 router.delete('/delete/:iduser', auth,userCtrl.deleteUser)
 
 

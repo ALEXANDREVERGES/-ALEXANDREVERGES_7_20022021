@@ -68,6 +68,7 @@ function Post(){
               encType="multipart/form-data"
               action="http://localhost:3000/upload"
             >
+              
               <div className="btnPostImg">
                 <input
                   type="file"
@@ -76,11 +77,13 @@ function Post(){
                   onChange={(e) => setPhoto(e.target.value)}
                   id="image"
                   className="inputValiderImg"
-                />
+                  title="choisir et envoie image"
+                /> 
                 <input
                   className="inputValiderImg"
                   type="submit"
                   value="Téléchargez votre image"
+                  title="choisir et envoie image"
                 />
               </div>
             </form>
